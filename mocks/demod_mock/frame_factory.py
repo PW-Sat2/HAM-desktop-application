@@ -21,9 +21,7 @@ class FrameFactory:
         with open(frame_path, 'rb') as frame:
             return frame.read()
 
-    def random_sleep(self):
-        shortest = 0.01
-        longest = 1
-        time_to_sleep = random.uniform(shortest, longest)
+    def random_sleep(self, min_interval=0.01, max_interval=1):
+        time_to_sleep = random.uniform(min_interval, max_interval)
         self.logger.log(logging.DEBUG, "Sleeping: {0} s".format(time_to_sleep))
         time.sleep(time_to_sleep)
