@@ -1,6 +1,6 @@
 import zmq
-import colorlog
 import logging
+
 
 class FrameSink:
     def __init__(self, address="tcp://*:7001"):

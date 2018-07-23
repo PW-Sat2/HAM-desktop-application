@@ -1,8 +1,7 @@
 from sink import FrameSink
 from frame_factory import FrameFactory
-from setup_log import _setup_log
+from setup_log import setup_log
 import argparse
-import colorlog
 import logging
 
 parser = argparse.ArgumentParser()
@@ -19,7 +18,7 @@ args = parser.parse_args()
 demodulator = FrameSink()
 factory = FrameFactory(args.directory)
 
-root_logger = _setup_log(args.verbose)
+root_logger = setup_log(args.verbose)
 root_logger.log(logging.INFO, "Use Ctrl-C to terminate.")
 root_logger.log(logging.INFO, "Starting frame sink")
 

@@ -1,7 +1,8 @@
 import colorlog
 import logging
 
-def _setup_log(debug):
+
+def setup_log(debug):
     root_logger = logging.getLogger()
     handler = colorlog.StreamHandler()
 
@@ -26,3 +27,4 @@ def _setup_log(debug):
         root_logger.setLevel(logging.INFO)
 
     return root_logger
+

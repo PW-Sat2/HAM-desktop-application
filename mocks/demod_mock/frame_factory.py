@@ -1,9 +1,8 @@
 import time
 import random
 import glob
-import argparse
-import colorlog
 import logging
+
 
 class FrameFactory:
     def __init__(self, frames_directory):
