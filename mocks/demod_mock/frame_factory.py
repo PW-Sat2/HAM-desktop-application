@@ -14,7 +14,7 @@ class FrameFactory:
         return glob.glob(self.frames_directory + "/*.raw")
 
     def get_random_frame(self):
-        frame_no = random.randrange(0, len(self.frames_list)-1)
+        frame_no = random.randint(0, len(self.frames_list)-1)
         frame_path = self.frames_list[frame_no]
         self.logger.log(logging.DEBUG, "Frame path: {0}".format(frame_path))
         with open(frame_path, 'rb') as frame:
