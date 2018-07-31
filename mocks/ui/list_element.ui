@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>491</width>
+    <height>72</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedKingdom"/>
+  </property>
+  <widget class="QLabel" name="label_uuid_text">
+   <property name="geometry">
+    <rect>
+     <x>54</x>
+     <y>40</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>uuid:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_uuid_value">
+   <property name="geometry">
+    <rect>
+     <x>92</x>
+     <y>40</y>
+     <width>341</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>Click to see the frame content</string>
+   </property>
+   <property name="text">
+    <string>14016296-8d4f-4a25-8911-5ecaeb13d9ffp</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_timestamp">
+   <property name="geometry">
+    <rect>
+     <x>54</x>
+     <y>12</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>Timestamp</string>
+   </property>
+   <property name="text">
+    <string>2017-11-30 11:14:33</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="downlink_icon">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>21</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Downlink</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="img_pix.qrc">:/downlink-green/downlink-color-green.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="upload_status_icon">
+   <property name="geometry">
+    <rect>
+     <x>451</x>
+     <y>21</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Frame successfully sent to server, thanks!</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="img_pix.qrc">:/cloud-online/cloud-online.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="label_frame_type">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>12</y>
+     <width>213</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="img_pix.qrc"/>
+ </resources>
+ <connections/>
+</ui>
