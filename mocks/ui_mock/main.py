@@ -33,10 +33,6 @@ class StartQT4(QtGui.QMainWindow):
     def init_list(self):
         for i in range(100):
             item_widget = UiFrameListWidget()
-
-            item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/telemetry/'
-                                               'detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">'
-                                               '14016296-8d4f-4a25-8911-5ecaeb13d9ffp</a>')
             item_widget.uuidValueLabel.setOpenExternalLinks(True)
             item_widget.uploadStatusIconButton.setToolTip("Frame successfully sent to server, thanks!")
             item_widget.timestampLabel.setText("10:53:13.224 2017-02-15")
@@ -45,10 +41,16 @@ class StartQT4(QtGui.QMainWindow):
                 item_widget.frameTypeLabel.setStyleSheet('background-color:#2196f3; color:#ffffff; border: none;'
                                                          'font-weight: bold;')
                 item_widget.frameTypeLabel.setText('error counter configuration')
+                item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
+                                                   'telemetry/detailed/frame/0963a6d1-b752-4d76-b392-c4123753f16a">'
+                                                   '0963a6d1-b752-4d76-b392-c4123753f16a</a>')
             else:
                 item_widget.frameTypeLabel.setStyleSheet('background-color:#4CAF50; color:#ffffff; border: none;'
                                                          'font-weight: bold;')
                 item_widget.frameTypeLabel.setText('pong')
+                item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
+                                                   'telemetry/detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">'
+                                                   '14016296-8d4f-4a25-8911-5ecaeb13df</a>')
             self.j += 1
 
             item = QtGui.QListWidgetItem(self.ui.framesListWidget)
