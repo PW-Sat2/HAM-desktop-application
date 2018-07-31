@@ -1,54 +1,56 @@
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtCore, QtGui
 from main_window import Ui_mainWindow
-import list_element2 as list_element
-
-reload(list_element)
+from frame_list_element import UiFrameListWidget
 
 
 class StartQT4(QtGui.QMainWindow):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        self.ui = Ui_mainWindow()
-        self.ui.setupUi(self)
         self.i = 0
         self.j = 0
 
-        self.ui.pushButton.pressed.connect(self.update)
+        self.ui = Ui_mainWindow()
+        self.ui.setupUi(self)
+        self.init_list()
+        self.init_ribbon()
 
-        self.copy_list = []
+    def init_ribbon(self):
+        self.ui.serverConnectionStatusTextLabel.setToolTip("Server radio.pw-sat.pl is online")
+        self.ui.serverConnectionStatusTextLabel.setText("Online")
+        self.ui.credentialsButton.setText("michal.gumiela@gmail.com")
+        self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is online")
 
-        for i in range(10):
-            item = QtGui.QListWidgetItem(self.ui.listWidget)
-            self.copy_list.append(item)
-            item_widget = list_element.Ui_self()
-            item_widget.label_uuid_value.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/telemetry/detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">14016296-8d4f-4a25-8911-5ecaeb13d9ffp</a>')
-            item_widget.label_uuid_value.setOpenExternalLinks(True)
-            item.setSizeHint(QtCore.QSize(0, 65))
-            self.ui.listWidget.addItem(item)
-            self.ui.listWidget.setItemWidget(item, item_widget)
-                   
+    def init_list(self):
+        for i in range(100):
+            item_widget = UiFrameListWidget()
+
+            item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/telemetry/'
+                                               'detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">'
+                                               '14016296-8d4f-4a25-8911-5ecaeb13d9ffp</a>')
+            item_widget.uuidValueLabel.setOpenExternalLinks(True)
+            item_widget.uploadStatusIconButton.setToolTip("Frame successfully sent to server, thanks!")
+            item_widget.timestampLabel.setText("10:53:13.224 2017-02-15")
 
             if (self.j % 2) == 0:
-                item_widget.label_frame_type.setStyleSheet('background-color:#2196f3; color:#ffffff; border: none; font-weight: bold;')
-                item_widget.label_frame_type.setText('error counter configuration')
+                item_widget.frameTypeLabel.setStyleSheet('background-color:#2196f3; color:#ffffff; border: none;'
+                                                         'font-weight: bold;')
+                item_widget.frameTypeLabel.setText('error counter configuration')
             else:
-                item_widget.label_frame_type.setStyleSheet('background-color:#4CAF50; color:#ffffff; border: none; font-weight: bold;')
-                item_widget.label_frame_type.setText('pong')
-            self.j += 1          
+                item_widget.frameTypeLabel.setStyleSheet('background-color:#4CAF50; color:#ffffff; border: none;'
+                                                         'font-weight: bold;')
+                item_widget.frameTypeLabel.setText('pong')
+            self.j += 1
 
-    def update(self):
-        item_widget = list_element.Ui_self()
-        item_widget.label_uuid_value.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/telemetry/detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">dupa</a>')
-        item_widget.label_uuid_value.setOpenExternalLinks(True)
-        self.ui.listWidget.setItemWidget(self.copy_list[self.i], item_widget)
-        self.i += 1
-
+            item = QtGui.QListWidgetItem(self.ui.framesListWidget)
+            item.setSizeHint(QtCore.QSize(0, 65))
+            self.ui.framesListWidget.addItem(item)
+            self.ui.framesListWidget.setItemWidget(item, item_widget)
 
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    myapp = StartQT4()
-    myapp.show()
+    hamApp = StartQT4()
+    hamApp.show()
     sys.exit(app.exec_())

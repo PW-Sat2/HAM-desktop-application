@@ -50,34 +50,8 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="0" column="1">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="3">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="downlink_icon">
+     <widget class="QLabel" name="downlinkIconLabel">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -113,39 +87,31 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="4">
-     <widget class="QLabel" name="upload_status_icon">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="minimumSize">
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>25</width>
-        <height>25</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="maximumSize">
+     </spacer>
+    </item>
+    <item row="0" column="1">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>25</width>
-        <height>25</height>
+        <width>40</width>
+        <height>20</height>
        </size>
       </property>
-      <property name="toolTip">
-       <string>Frame successfully sent to server, thanks!</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
+     </spacer>
     </item>
     <item row="0" column="2">
      <layout class="QGridLayout" name="gridLayout_3">
@@ -171,7 +137,7 @@
          </spacer>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label_uuid_value">
+         <widget class="QLabel" name="uuidValueLabel">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -190,7 +156,7 @@
            <string>Click to see the frame content</string>
           </property>
           <property name="text">
-           <string>14016296-8d4f-4a25-8911-5ecaeb13d9ffp</string>
+           <string>Frame not send to cloud yet</string>
           </property>
           <property name="scaledContents">
            <bool>false</bool>
@@ -204,7 +170,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="label_uuid_text">
+         <widget class="QLabel" name="uuidTextLabel">
           <property name="font">
            <font>
             <family>Roboto</family>
@@ -212,6 +178,9 @@
             <weight>50</weight>
             <bold>false</bold>
            </font>
+          </property>
+          <property name="toolTip">
+           <string>Frame identifier on server</string>
           </property>
           <property name="text">
            <string>uuid: </string>
@@ -226,7 +195,7 @@
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QLabel" name="label_timestamp">
+         <widget class="QLabel" name="timestampLabel">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -256,7 +225,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QPushButton" name="label_frame_type">
+         <widget class="QPushButton" name="frameTypeLabel">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -274,6 +243,41 @@
        </layout>
       </item>
      </layout>
+    </item>
+    <item row="0" column="4">
+     <widget class="QPushButton" name="uploadStatusIconButton">
+      <property name="minimumSize">
+       <size>
+        <width>25</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>25</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="img_pix.qrc">
+        <normaloff>:/cloud-online/img/cloud-online.svg</normaloff>:/cloud-online/img/cloud-online.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>25</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
