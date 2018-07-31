@@ -1,7 +1,15 @@
 import sys
+import os
+
 from PyQt4 import QtCore, QtGui
-from main_window import Ui_mainWindow
-from frame_list_element import UiFrameListWidget
+
+try:
+    from main_window import Ui_mainWindow
+    from frame_list_element import UiFrameListWidget
+except ImportError:
+    sys.path.append(os.path.join(os.path.dirname(__file__), '../../ui'))
+    from main_window import Ui_mainWindow
+    from frame_list_element import UiFrameListWidget
 
 
 class StartQT4(QtGui.QMainWindow):
