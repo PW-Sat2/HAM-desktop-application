@@ -9,7 +9,7 @@ from cloud import *
 baseUrl = "http://titan.gajoch.pl:9090"
 credentialsPath = "credentials.json"
 cloud = Cloud(baseUrl, credentialsPath)
-frame_file = open('frame_0.raw', "rb")
+frame_file = open('../test_frames/frame_0.raw', "rb")
 frame_data = frame_file.read()
 timestamp = time.time()
 packet = {'timestamp': timestamp, 'frame': frame_data}
