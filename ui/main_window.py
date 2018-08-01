@@ -26,7 +26,7 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName(_fromUtf8("mainWindow"))
         mainWindow.setWindowModality(QtCore.Qt.NonModal)
-        mainWindow.resize(550, 550)
+        mainWindow.resize(550, 650)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
