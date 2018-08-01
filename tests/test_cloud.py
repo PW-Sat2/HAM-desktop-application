@@ -12,7 +12,7 @@ cloud = Cloud(baseUrl, credentialsPath)
 
 frame_file = open('../test_frames/frame_0.raw', "rb")
 frame_data = frame_file.read()
-timestamp = time.time()
+timestamp = 1534564313.345
 packet = {'timestamp': timestamp, 'frame': frame_data}
 
 
