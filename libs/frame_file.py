@@ -24,6 +24,10 @@ class FrameFile:
 
     def __decode(self, raw):
         split_raw = raw.split(',')
+
+        if len(split_raw) != 3:
+            raise ValueError('Corrupted file line/frame', len(split_raw))
+
         return {'timestamp': self.__decode_timestamp(split_raw[0]), 'frame': self.__decode_base64(split_raw[2])}
 
     def save(self, packet):
@@ -42,8 +46,8 @@ class FrameFile:
             try:
                 packets.append(self.__decode(item))
                 self.logger.log(logging.DEBUG, "Processed packet: " + item)
-            except ValueError:
-                self.logger.log(logging.DEBUG, "ValueError in packet decoding: " + item)
-            except TypeError:
-                self.logger.log(logging.DEBUG, "TypeError in packet decoding: " + item)
+            except ValueError as error:
+                self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
+            except TypeError as error:
+                self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
         return packets
