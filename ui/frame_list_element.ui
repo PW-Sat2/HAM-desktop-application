@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>501</width>
+    <width>611</width>
     <height>65</height>
    </rect>
   </property>
@@ -42,7 +42,7 @@
     <rect>
      <x>0</x>
      <y>-2</y>
-     <width>501</width>
+     <width>611</width>
      <height>71</height>
     </rect>
    </property>
@@ -53,6 +53,22 @@
     <property name="sizeConstraint">
      <enum>QLayout::SetNoConstraint</enum>
     </property>
+    <item>
+     <spacer name="horizontalSpacer_6">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item>
      <widget class="QLabel" name="downlinkIconLabel">
       <property name="sizePolicy">
@@ -100,7 +116,7 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
+        <width>40</width>
         <height>20</height>
        </size>
       </property>
@@ -279,7 +295,7 @@
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>20</width>
+        <width>40</width>
         <height>20</height>
        </size>
       </property>
@@ -322,6 +338,22 @@
        <bool>true</bool>
       </property>
      </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer_7">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>

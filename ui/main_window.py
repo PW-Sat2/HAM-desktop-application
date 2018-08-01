@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\main_window.ui'
+# Form implementation generated from reading ui file 'main_window.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -26,13 +26,13 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName(_fromUtf8("mainWindow"))
         mainWindow.setWindowModality(QtCore.Qt.NonModal)
-        mainWindow.resize(550, 650)
+        mainWindow.resize(660, 650)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(mainWindow.sizePolicy().hasHeightForWidth())
         mainWindow.setSizePolicy(sizePolicy)
-        mainWindow.setMinimumSize(QtCore.QSize(550, 550))
+        mainWindow.setMinimumSize(QtCore.QSize(660, 500))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/pw-sat2-logo/img/pw-sat2-logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         mainWindow.setWindowIcon(icon)
@@ -66,7 +66,7 @@ class Ui_mainWindow(object):
         self.tab = QtGui.QWidget()
         self.tab.setObjectName(_fromUtf8("tab"))
         self.gridLayoutWidget = QtGui.QWidget(self.tab)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 521, 61))
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, 0, 631, 61))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.gridLayout_2 = QtGui.QGridLayout(self.gridLayoutWidget)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
@@ -119,7 +119,7 @@ class Ui_mainWindow(object):
         self.tab_3 = QtGui.QWidget()
         self.tab_3.setObjectName(_fromUtf8("tab_3"))
         self.gridLayoutWidget_3 = QtGui.QWidget(self.tab_3)
-        self.gridLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 521, 61))
+        self.gridLayoutWidget_3.setGeometry(QtCore.QRect(0, 0, 631, 61))
         self.gridLayoutWidget_3.setObjectName(_fromUtf8("gridLayoutWidget_3"))
         self.gridLayout_5 = QtGui.QGridLayout(self.gridLayoutWidget_3)
         self.gridLayout_5.setObjectName(_fromUtf8("gridLayout_5"))
@@ -157,7 +157,7 @@ class Ui_mainWindow(object):
         self.tab_4 = QtGui.QWidget()
         self.tab_4.setObjectName(_fromUtf8("tab_4"))
         self.gridLayoutWidget_4 = QtGui.QWidget(self.tab_4)
-        self.gridLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 521, 61))
+        self.gridLayoutWidget_4.setGeometry(QtCore.QRect(0, 0, 631, 61))
         self.gridLayoutWidget_4.setObjectName(_fromUtf8("gridLayoutWidget_4"))
         self.gridLayout_6 = QtGui.QGridLayout(self.gridLayoutWidget_4)
         self.gridLayout_6.setObjectName(_fromUtf8("gridLayout_6"))
@@ -187,7 +187,7 @@ class Ui_mainWindow(object):
         self.tab_5 = QtGui.QWidget()
         self.tab_5.setObjectName(_fromUtf8("tab_5"))
         self.gridLayoutWidget_5 = QtGui.QWidget(self.tab_5)
-        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(0, 0, 521, 61))
+        self.gridLayoutWidget_5.setGeometry(QtCore.QRect(0, 0, 631, 61))
         self.gridLayoutWidget_5.setObjectName(_fromUtf8("gridLayoutWidget_5"))
         self.gridLayout_7 = QtGui.QGridLayout(self.gridLayoutWidget_5)
         self.gridLayout_7.setObjectName(_fromUtf8("gridLayout_7"))

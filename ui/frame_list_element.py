@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\frame_list_element.ui'
+# Form implementation generated from reading ui file 'frame_list_element.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -26,12 +26,15 @@ class UiFrameListWidget(QtGui.QWidget):
     def __init__ (self, parent=None):
         super(QtGui.QWidget, self).__init__(parent)
         self.gridLayoutWidget = QtGui.QWidget(self)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, -2, 501, 71))
+        self.gridLayoutWidget = QtGui.QWidget(self)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(0, -2, 611, 71))
         self.gridLayoutWidget.setObjectName(_fromUtf8("gridLayoutWidget"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.gridLayoutWidget)
         self.horizontalLayout.setSizeConstraint(QtGui.QLayout.SetNoConstraint)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.downlinkIconLabel = QtGui.QLabel(self.gridLayoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -46,8 +49,8 @@ class UiFrameListWidget(QtGui.QWidget):
         self.downlinkIconLabel.setWordWrap(False)
         self.downlinkIconLabel.setObjectName(_fromUtf8("downlinkIconLabel"))
         self.horizontalLayout.addWidget(self.downlinkIconLabel)
-        spacerItem = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.gridLayout_3 = QtGui.QGridLayout()
         self.gridLayout_3.setSpacing(0)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
@@ -72,10 +75,10 @@ class UiFrameListWidget(QtGui.QWidget):
         self.uuidValueLabel.setOpenExternalLinks(True)
         self.uuidValueLabel.setObjectName(_fromUtf8("uuidValueLabel"))
         self.gridLayout_5.addWidget(self.uuidValueLabel, 0, 2, 1, 1)
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_5.addItem(spacerItem1, 0, 3, 1, 1)
-        spacerItem2 = QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_5.addItem(spacerItem2, 0, 1, 1, 1)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem2, 0, 3, 1, 1)
+        spacerItem3 = QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem3, 0, 1, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout_5, 1, 0, 1, 1)
         self.gridLayout_4 = QtGui.QGridLayout()
         self.gridLayout_4.setSpacing(0)
@@ -85,8 +88,8 @@ class UiFrameListWidget(QtGui.QWidget):
         self.frameTypeLabel.setAutoFillBackground(False)
         self.frameTypeLabel.setObjectName(_fromUtf8("frameTypeLabel"))
         self.gridLayout_4.addWidget(self.frameTypeLabel, 0, 2, 1, 1)
-        spacerItem3 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_4.addItem(spacerItem3, 0, 1, 1, 1)
+        spacerItem4 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.gridLayout_4.addItem(spacerItem4, 0, 1, 1, 1)
         self.timestampLabel = QtGui.QLabel(self.gridLayoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -102,8 +105,8 @@ class UiFrameListWidget(QtGui.QWidget):
         self.gridLayout_4.addWidget(self.timestampLabel, 0, 0, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout_4, 0, 0, 1, 1)
         self.horizontalLayout.addLayout(self.gridLayout_3)
-        spacerItem4 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem4)
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem5)
         self.uploadStatusIconButton = QtGui.QPushButton(self.gridLayoutWidget)
         self.uploadStatusIconButton.setMinimumSize(QtCore.QSize(25, 25))
         self.uploadStatusIconButton.setMaximumSize(QtCore.QSize(25, 25))
@@ -117,6 +120,8 @@ class UiFrameListWidget(QtGui.QWidget):
         self.uploadStatusIconButton.setFlat(True)
         self.uploadStatusIconButton.setObjectName(_fromUtf8("uploadStatusIconButton"))
         self.horizontalLayout.addWidget(self.uploadStatusIconButton)
+        spacerItem6 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem6)
 
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self)
