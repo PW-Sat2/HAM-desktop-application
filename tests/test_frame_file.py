@@ -17,25 +17,29 @@ frame_file_reference = "2018-08-18_03:51:53:345000,D,oK6mgqhk4KCupoKoZGED8M0CAAA
 
 class TestFrameFile(unittest.TestCase):
     def test_save(self):
-        saver = FrameFile('test.frames')
+        saver = FrameFile('helpers/test.frames')
         saver.save(packet)
-        with open('test.frames', 'rb') as f:
+        with open('helpers/test.frames', 'rb') as f:
             saved_data = f.readlines()[-1]
             self.assertEqual(saved_data.strip(), frame_file_reference.strip())
 
     def test_read_raw(self):
-        reader = FrameFile('test.frames')
+        reader = FrameFile('helpers/test.frames')
         raw_line = reader.read_raw()[-1]
         self.assertEqual(raw_line.strip(), frame_file_reference.strip())
 
     def test_read_packet(self):
-        reader = FrameFile('test.frames')
+        reader = FrameFile('helpers/test.frames')
         read_packet = reader.read_packets()[-1]
         self.assertEqual(read_packet, packet)
 
     def test_read_qty_of_packets(self):
-        reader = FrameFile('test.frames')
+        reader = FrameFile('helpers/test.frames')
         read_packet_qty = len(reader.read_packets())
-        with open('test.frames', 'rb') as f:
+        with open('helpers/test.frames', 'rb') as f:
             reference_packet_qty = len(f.readlines())
             self.assertEqual(read_packet_qty, reference_packet_qty)
+
+    def test_read_packets_with_faults(self):
+        reader = FrameFile('helpers/test_faulty.frames')
+        self.assertEqual(len(reader.read_packets()), 2)

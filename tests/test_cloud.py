@@ -6,7 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../libs'))
 from cloud import *
 
 baseUrl = "http://titan.gajoch.pl:9090"
-credentialsPath = "credentials.json"
+credentialsPath = "helpers/credentials.json"
 cloud = Cloud(baseUrl, credentialsPath)
 
 frame_file = open('../test_frames/frame_0.raw', "rb")
