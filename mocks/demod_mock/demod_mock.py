@@ -5,7 +5,7 @@ import argparse
 import logging
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--directory", required=False, default="test_frames",
+parser.add_argument("-d", "--directory", required=False, default="../../test_frames",
                     help="Path to directory containing only binary frames (*.raw files).")
 parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
                     help="Increase output verbosity.")
