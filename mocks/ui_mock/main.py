@@ -39,14 +39,14 @@ class StartQT4(QtGui.QMainWindow):
 
             if (self.j % 2) == 0:
                 item_widget.frameTypeLabel.setStyleSheet('background-color:#2196f3; color:#ffffff; border: none;'
-                                                         'font-weight: bold;')
+                                                         'font-weight: bold; font-size: 11px;')
                 item_widget.frameTypeLabel.setText('error counter configuration')
                 item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
                                                    'telemetry/detailed/frame/0963a6d1-b752-4d76-b392-c4123753f16a">'
                                                    '0963a6d1-b752-4d76-b392-c4123753f16a</a>')
             else:
                 item_widget.frameTypeLabel.setStyleSheet('background-color:#4CAF50; color:#ffffff; border: none;'
-                                                         'font-weight: bold;')
+                                                         'font-weight: bold; font-size: 11px;')
                 item_widget.frameTypeLabel.setText('pong')
                 item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
                                                    'telemetry/detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">'
