@@ -10,10 +10,11 @@ class FrameFile:
         self.logger = logging.getLogger("FrameFile")
 
     def __format_timestamp(self, packet):
-        return datetime.datetime.fromtimestamp(packet["timestamp"]).strftime("%Y-%m-%d_%H:%M:%S:%f")
+        return datetime.datetime.utcfromtimestamp(packet["timestamp"]).strftime("%Y-%m-%d_%H:%M:%S:%f")
 
     def __decode_timestamp(self, timestamp_string):
-        return time.mktime(datetime.datetime.strptime(timestamp_string, "%Y-%m-%d_%H:%M:%S:%f").timetuple())
+        return (datetime.datetime.strptime(timestamp_string, "%Y-%m-%d_%H:%M:%S:%f") -
+         datetime.datetime.utcfromtimestamp(0)).total_seconds()
 
     def __encode_base64(self, packet):
         return base64.b64encode(packet["frame"])
