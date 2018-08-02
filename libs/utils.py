@@ -1,9 +1,7 @@
 import time
 import struct
 from string import Formatter
-from threading import Event, Timer, Thread
-from bitarray import bitarray
-
+from threading import Event, Thread
 
 def hex_data(data):
     if data is None:
@@ -101,15 +99,15 @@ def call(method, default, *args):
     return default
 
 
-class TestEvent():
+class TestEvent:
     def __init__(self):
         self.flag = Event()
 
-    def set(self, *args):
+    def set(self):
         self.flag.set()
 
-    def reset(self, *args):
-        self.flag.clear();
+    def reset(self):
+        self.flag.clear()
 
     def wait_for_change(self, timeout=None):
         return self.flag.wait(timeout)
