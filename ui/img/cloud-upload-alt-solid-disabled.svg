@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   aria-hidden="true"
+   data-prefix="fas"
+   data-icon="cloud-upload-alt"
+   class="svg-inline--fa fa-cloud-upload-alt fa-w-20"
+   role="img"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="cloud-upload-alt-solid-disabled.svg"
+   width="512"
+   height="512"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="0.99146729"
+     inkscape:cx="320"
+     inkscape:cy="256"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <circle
+     style="fill:#868686;fill-opacity:1;stroke-width:1.60207045"
+     id="path817"
+     cx="256"
+     cy="256"
+     r="256" />
+  <path
+     d="m 400,219.62499 c 2.5625,-6.68749 4,-14 4,-21.62499 0,-33.12501 -26.87501,-60 -60,-60 -12.3125,0 -23.8125,3.75 -33.3125,10.12499 C 293.37499,118.12499 261.0625,98 224,98 c -55.25,0 -100,44.75 -100,100 0,1.6875 0.0625,3.37499 0.12499,5.0625 C 89.125008,215.37499 64,248.75 64,288 c 0,49.6875 40.3125,90 90,90 h 230 c 44.1875,0 80,-35.8125 80,-80 0,-38.6875 -27.5,-71 -64,-78.37501 z M 309.87499,258 H 269 v 70 c 0,5.5 -4.5,10 -10,10 h -30 c -5.5,0 -10,-4.5 -10,-10 V 258 H 178.12499 C 169.1875,258 164.75,247.25 171.0625,240.9375 l 65.875,-65.875 c 3.875,-3.875 10.25,-3.875 14.125,0 l 65.875,65.875 C 323.25,247.25 318.75,258 309.87499,258 Z"
+     id="path2"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.625" />
+</svg>

@@ -1,0 +1,38 @@
+<RCC>
+  <qresource prefix="cloud-upload">
+    <file>img/cloud-upload-alt-solid.svg</file>
+  </qresource>
+  <qresource prefix="source">
+    <file>img/play-solid.svg</file>
+  </qresource>
+  <qresource prefix="credentials">
+    <file>img/key-solid.svg</file>
+  </qresource>
+  <qresource prefix="demodulator">
+    <file>img/signature-solid.svg</file>
+  </qresource>
+  <qresource prefix="help">
+    <file>img/question-solid.svg</file>
+  </qresource>
+  <qresource prefix="load-frames">
+    <file>img/file-import-solid.svg</file>
+    <file>img/file-alt-solid.svg</file>
+    <file>img/file-solid.svg</file>
+  </qresource>
+  <qresource prefix="pw-sat2-logo">
+    <file>img/pw-sat2-logo.png</file>
+  </qresource>
+  <qresource prefix="cloud-online">
+    <file>img/cloud-online.svg</file>
+  </qresource>
+  <qresource prefix="auto-upload-offline">
+    <file>img/cloud-upload-alt-solid-disabled.svg</file>
+  </qresource>
+  <qresource prefix="cloud-offline">
+    <file>img/cloud-offline.svg</file>
+  </qresource>
+  <qresource prefix="downlink-green">
+    <file>img/downlink-frame.svg</file>
+    <file>img/downlink-color-green.png</file>
+  </qresource>
+</RCC>
