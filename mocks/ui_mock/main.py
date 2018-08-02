@@ -16,7 +16,6 @@ class StartQT4(QtGui.QMainWindow):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        self.i = 0
         self.j = 0
 
         self.ui = Ui_mainWindow()
