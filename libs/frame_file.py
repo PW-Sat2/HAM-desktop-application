@@ -32,7 +32,8 @@ class FrameFile:
 
     def save(self, packet):
         with open(self.path, "a") as f:
-            f.write(self.__format_timestamp(packet) + "," + "D" + "," + self.__encode_base64(packet) + "\n")
+            packet_string = ','.join([self.__format_timestamp(packet), 'D', self.__encode_base64(packet)])
+            f.write(packet_string + '\n')
         self.logger.log(logging.DEBUG, "Frame saved to file " + str(self.path))
 
     def read_raw(self):
