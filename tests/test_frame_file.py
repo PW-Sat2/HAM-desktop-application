@@ -17,9 +17,9 @@ frame_file_reference = "2018-08-18_03:51:53:345000,D,oK6mgqhk4KCupoKoZGED8M0CAAA
 
 class TestFrameFile(unittest.TestCase):
     def test_save(self):
-        saver = FrameFile('helpers/test.frames')
+        saver = FrameFile('helpers/test_save.frames')
         saver.save(packet)
-        with open('helpers/test.frames', 'rb') as f:
+        with open('helpers/test_save.frames', 'rb') as f:
             saved_data = f.readlines()[-1]
             self.assertEqual(saved_data.strip(), frame_file_reference.strip())
 
