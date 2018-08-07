@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>660</width>
-    <height>650</height>
+    <height>605</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,7 +22,7 @@
   <property name="minimumSize">
    <size>
     <width>660</width>
-    <height>500</height>
+    <height>225</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -74,7 +74,7 @@
          <string notr="true">QTabBar::tab { height: 35px;}</string>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <property name="iconSize">
          <size>
@@ -221,10 +221,10 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Choose a new credentials file...</string>
+              <string/>
              </property>
              <property name="text">
-              <string>michal.gumiela@gmail.com</string>
+              <string>ham-mail@pw-sat.pl</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -471,7 +471,20 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
-           <item row="0" column="6">
+           <item row="0" column="4">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="5">
             <widget class="QPushButton" name="helpCloudUploadButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -503,45 +516,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="loadFramesFromFileButton">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Upload frames saved in *.frames file</string>
-             </property>
-             <property name="text">
-              <string>Load Frames From File</string>
-             </property>
-             <property name="icon">
-              <iconset resource="img_pix.qrc">
-               <normaloff>:/load-frames/img/file-import-solid.svg</normaloff>:/load-frames/img/file-import-solid.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>35</width>
-               <height>35</height>
-              </size>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2">
             <widget class="QToolButton" name="autoUploadToolButton">
              <property name="sizePolicy">
@@ -563,7 +537,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Upload frames to cloud automatically</string>
+              <string>Send frames from the list to cloud</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::LeftToRight</enum>
@@ -572,7 +546,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>Auto Send Frames</string>
+              <string>Send Frames To Cloud</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -600,31 +574,28 @@
              <property name="autoExclusive">
               <bool>false</bool>
              </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="sendFramesToCloudButton">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="loadFramesFromFileButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
                <height>50</height>
               </size>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
              <property name="toolTip">
-              <string>Send frames from the list to cloud</string>
+              <string>Upload frames saved in *.frames file</string>
              </property>
              <property name="text">
-              <string>Send Frames To Cloud</string>
+              <string>Load Frames From File</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
-               <normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</iconset>
+               <normaloff>:/load-frames/img/file-import-solid.svg</normaloff>:/load-frames/img/file-import-solid.svg</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -653,6 +624,32 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="sendUnsuccessfulButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Upload frames saved in *.frames file</string>
+             </property>
+             <property name="text">
+              <string>Re-send Unsuccessful</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -672,7 +669,7 @@
         <property name="minimumSize">
          <size>
           <width>520</width>
-          <height>360</height>
+          <height>65</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -680,6 +677,18 @@
           <width>2000</width>
           <height>10000</height>
          </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="resizeMode">
+         <enum>QListView::Adjust</enum>
         </property>
         <property name="sortingEnabled">
          <bool>false</bool>
@@ -694,7 +703,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
-          <height>20</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>
