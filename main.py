@@ -1,62 +1,74 @@
 import sys
 import os
-
 from PyQt4 import QtCore, QtGui
-
-from ui.main_window import Ui_mainWindow
-from ui.frame_list_element import UiFrameListWidget
 from PyQt4 import QtSvg
+from app.receive_distribute import ReceiveDistribute
+from app.upload_cloud import UploadCloud
+from app.save_frames_file import SaveFramesFileThread
+from threading import Event
+from app.setup_log import setup_log
+import imp
+import Queue
+from collections import deque
+from zmq import *
+from app.gui_pyqt import StartQT4
+from app.pyinstaller_hacks import resource_path
+import shutil
+import argparse
 
 
-class StartQT4(QtGui.QMainWindow):
-    def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+'''TO DO: Temporary, ugly thing to unpack some data from exe
+ because of cloud side limitations in folders zipping'''
+def unpack_example_frames():
+    try:
+        sys._MEIPASS
+        if not os.path.exists("saved_frames"):
+            os.makedirs("saved_frames")
 
-        self.i = 0
-        self.j = 0
+        for i in range(1, 6):
+            shutil.copyfile(resource_path('saved_frames/test_{0}.frames'.format(i)), 'saved_frames/test_{0}.frames'.format(i))
+    except AttributeError:
+        pass
 
-        self.ui = Ui_mainWindow()
-        self.ui.setupUi(self)
-        self.init_list()
-        self.init_ribbon()
 
-    def init_ribbon(self):
-        self.ui.serverConnectionStatusTextLabel.setToolTip("Server radio.pw-sat.pl is online")
-        self.ui.serverConnectionStatusTextLabel.setText("Online")
-        self.ui.credentialsButton.setText("michal.gumiela@gmail.com")
-        self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is online")
+unpack_example_frames()
 
-    def init_list(self):
-        for i in range(100):
-            item_widget = UiFrameListWidget()
-            item_widget.uuidValueLabel.setOpenExternalLinks(True)
-            item_widget.uploadStatusIconButton.setToolTip("Frame successfully sent to server, thanks!")
-            item_widget.timestampLabel.setText("10:53:13.224 2017-02-15")
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
+                    help="Increase output verbosity.")
+args = parser.parse_args()
 
-            if (self.j % 2) == 0:
-                item_widget.frameTypeLabel.setStyleSheet('background-color:#2196f3; color:#ffffff; border: none;'
-                                                         'font-weight: bold; font-size: 11px;')
-                item_widget.frameTypeLabel.setText('error counter configuration')
-                item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
-                                                   'telemetry/detailed/frame/0963a6d1-b752-4d76-b392-c4123753f16a">'
-                                                   '0963a6d1-b752-4d76-b392-c4123753f16a</a>')
-            else:
-                item_widget.frameTypeLabel.setStyleSheet('background-color:#4CAF50; color:#ffffff; border: none;'
-                                                         'font-weight: bold; font-size: 11px;')
-                item_widget.frameTypeLabel.setText('pong')
-                item_widget.uuidValueLabel.setText('<a style="color: #414141;" href="http://titan.gajoch.pl:9090/'
-                                                   'telemetry/detailed/frame/14016296-8d4f-4a25-8911-5ecaeb13d9ff">'
-                                                   '14016296-8d4f-4a25-8911-5ecaeb13df</a>')
-            self.j += 1
-
-            item = QtGui.QListWidgetItem(self.ui.framesListWidget)
-            item.setSizeHint(QtCore.QSize(0, 65))
-            self.ui.framesListWidget.addItem(item)
-            self.ui.framesListWidget.setItemWidget(item, item_widget)
+root_logger = setup_log(args.verbose)
+config = imp.load_source('config', 'config.py')
 
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
-    hamApp = StartQT4()
+    gui_queue = deque()
+    cloud_tx_queue = deque()
+    cloud_rx_queue = deque()
+    error_queue = deque()
+    file_queue = Queue.Queue()
+    path_queue = Queue.Queue()
+
+    stop_event = Event()
+    send_active = Event()
+    hamApp = StartQT4(stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue, send_active)
+
+    rec = ReceiveDistribute(stop_event, config.config, gui_queue, file_queue)
+    rec.start()
+
+    clo = UploadCloud(stop_event, config.config, cloud_rx_queue, cloud_tx_queue, error_queue, send_active)
+    clo.start()
+
+    file_save = SaveFramesFileThread(stop_event, config.config, file_queue, path_queue)
+    file_save.start()
+
     hamApp.show()
-    sys.exit(app.exec_())
+
+    status = app.exec_()
+    stop_event.set()
+    clo.join()
+    rec.join()
+    file_save.join()
+    sys.exit(status)
