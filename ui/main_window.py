@@ -284,7 +284,7 @@ class Ui_mainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
-        mainWindow.setWindowTitle(_translate("mainWindow", "PW-Sat2 Ground Station Main Window", None))
+        mainWindow.setWindowTitle(_translate("mainWindow", "PW-Sat2 Ground Station - Main Window", None))
         self.serverConnectionStatusTextLabel.setToolTip(_translate("mainWindow", "Server radio.pw-sat.pl is online", None))
         self.serverConnectionStatusTextLabel.setText(_translate("mainWindow", "Online", None))
         self.helpAccountButton.setToolTip(_translate("mainWindow", "Help on Account", None))
