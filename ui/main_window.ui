@@ -74,7 +74,7 @@
          <string notr="true">QTabBar::tab { height: 35px;}</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="iconSize">
          <size>
@@ -221,7 +221,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string/>
+              <string>Click the button to load new credentials...</string>
              </property>
              <property name="text">
               <string>ham-mail@pw-sat.pl</string>
@@ -546,7 +546,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>Send Frames To Cloud</string>
+              <string>Auto-Upload Enabled</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -636,7 +636,7 @@
               <string notr="true">Click to try again sending frames that have not been successfully sent (labeled with error).</string>
              </property>
              <property name="text">
-              <string>Re-send Unsuccessful</string>
+              <string>Re-Upload Failed</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">

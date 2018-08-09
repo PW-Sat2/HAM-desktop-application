@@ -15,6 +15,7 @@ from app.gui_pyqt import StartQT4
 from app.pyinstaller_hacks import resource_path
 import shutil
 import argparse
+from ui.credentials_choose import CredentialsChooseWidget
 
 
 '''TO DO: Temporary, ugly thing to unpack some data from exe
@@ -53,22 +54,24 @@ if __name__ == "__main__":
 
     stop_event = Event()
     send_active = Event()
-    hamApp = StartQT4(stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue, send_active)
 
-    rec = ReceiveDistribute(stop_event, config.config, gui_queue, file_queue)
-    rec.start()
+    upload_cloud_thread = UploadCloud(stop_event, config.config, cloud_rx_queue, cloud_tx_queue, error_queue,
+                                      send_active)
+    upload_cloud_thread.start()
 
-    clo = UploadCloud(stop_event, config.config, cloud_rx_queue, cloud_tx_queue, error_queue, send_active)
-    clo.start()
+    file_save_thread = SaveFramesFileThread(stop_event, config.config, file_queue, path_queue)
+    file_save_thread.start()
 
-    file_save = SaveFramesFileThread(stop_event, config.config, file_queue, path_queue)
-    file_save.start()
+    frames_receiver_thread = ReceiveDistribute(stop_event, config.config, gui_queue, file_queue)
+    frames_receiver_thread.start()
 
+    hamApp = StartQT4(stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue,
+                      send_active, upload_cloud_thread)
     hamApp.show()
 
     status = app.exec_()
     stop_event.set()
-    clo.join()
-    rec.join()
-    file_save.join()
+    upload_cloud_thread.join()
+    frames_receiver_thread.join()
+    file_save_thread.join()
     sys.exit(status)

@@ -10,11 +10,15 @@ from app.handle_exit import ExitMessageHandler
 import json
 import webbrowser
 from ui.frame_list_empty_element import UiFrameListEmptyWidget
+from app.validate_credentials import ValidateCredentials
+from ui.credentials_choose import CredentialsChooseWidget
+from app.load_credentials_file import LoadCredentialsFile
+import logging
 
 
 class StartQT4(QtGui.QMainWindow):
     def __init__(self, stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue,
-                 send_active):
+                 send_active, upload_cloud_thread):
         QtGui.QWidget.__init__(self, None)
 
         self.ui = Ui_mainWindow()
@@ -30,6 +34,7 @@ class StartQT4(QtGui.QMainWindow):
         self.cloud_tx_queue = cloud_tx_queue
         self.cloud_rx_queue = cloud_rx_queue
         self.send_active = send_active
+        self.upload_cloud_thread = upload_cloud_thread
 
         self.first_frame = True
 
@@ -39,7 +44,32 @@ class StartQT4(QtGui.QMainWindow):
         self.__create_start_threads()
         self.__set_send_active()
         self.__connect_demodulator_button()
-        self.__add_welcome_widget()
+
+        self.validate_credentials = ValidateCredentials(self.config.config['CREDENTIALS_FILE'])
+        self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
+
+        if self.validate_credentials.file_blank():
+            self.__add_credentials_widget()
+        else:
+            self.__add_welcome_widget()
+
+    def __add_credentials_widget(self):
+        self.ui.framesListWidget.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
+        item_widget = CredentialsChooseWidget()
+
+        item_widget.choose_credentials_file_button.clicked.connect(self.__handle_credentials_file_widget_button)
+
+        item = QtGui.QListWidgetItem(self.ui.framesListWidget)
+        item.setSizeHint(QtCore.QSize(0, 500))
+        self.ui.framesListWidget.addItem(item)
+        self.ui.framesListWidget.setItemWidget(item, item_widget)
+
+    def __handle_credentials_file_widget_button(self):
+        if self.__credentials_file_load_check_propagate():
+            self.__remove_last_widget()
+            self.__add_welcome_widget()
+        else:
+            pass
 
     def __add_welcome_widget(self):
         self.ui.framesListWidget.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
@@ -54,7 +84,7 @@ class StartQT4(QtGui.QMainWindow):
         self.ui.framesListWidget.addItem(item)
         self.ui.framesListWidget.setItemWidget(item, item_widget)
 
-    def __remove_welcome_widget(self):
+    def __remove_last_widget(self):
         self.ui.framesListWidget.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
         self.ui.framesListWidget.takeItem(0)
 
@@ -95,6 +125,20 @@ class StartQT4(QtGui.QMainWindow):
         self.auth_status_thread.state_signal.connect(self.set_auth_status)
         self.auth_status_thread.start()
 
+        self.ui.credentialsButton.clicked.connect(self.__credentials_file_load_check_propagate)
+
+    def __credentials_file_load_check_propagate(self):
+        result = LoadCredentialsFile.load_with_dialog()
+        if result:
+            self.auth_status_thread.cloud.load_credentials()
+            self.upload_cloud_thread.cloud.load_credentials()
+            self.auth_status_thread.check()
+            self.logger.log(logging.DEBUG, "Updated credential file")
+        else:
+            self.logger.log(logging.DEBUG, "Not updated credential file")
+
+        return result
+
     def __set_send_active(self):
         self.send_active.set()
 
@@ -126,7 +170,7 @@ class StartQT4(QtGui.QMainWindow):
 
     def __process_frame_data(self, packet):
         if self.__first_frame():
-            self.__remove_welcome_widget()
+            self.__remove_last_widget()
 
         data = self.__produce_list_item(packet)
         self.__add_to_list(data)
@@ -174,23 +218,30 @@ class StartQT4(QtGui.QMainWindow):
             self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is not available")
             self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-offline/img/cloud-offline.svg"))
 
-    def set_auth_status(self, status):
+    def set_auth_status(self, auth_status):
         icon = QtGui.QIcon()
-        if status:
-            with open(self.config.config['CREDENTIALS_FILE']) as credentials:
-                credentials_data = json.load(credentials)
+        self.validate_credentials.load()
 
-                icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid.svg"), QtGui.QIcon.Normal,
-                               QtGui.QIcon.Off)
-                self.ui.credentialsButton.setIcon(icon)
-                self.ui.credentialsButton.setText(credentials_data["identifier"])
-                self.ui.credentialsButton.setToolTip("Signed up successfully")
-        else:
+        if auth_status:
+            icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid.svg"), QtGui.QIcon.Normal,
+                           QtGui.QIcon.Off)
+            self.ui.credentialsButton.setIcon(icon)
+            self.ui.credentialsButton.setText(self.validate_credentials.credentials_data["identifier"])
+            self.ui.credentialsButton.setToolTip("Signed up successfully")
+
+        elif self.validate_credentials.file_blank():
+            icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid-disabled.svg"), QtGui.QIcon.Normal,
+                           QtGui.QIcon.Off)
+            self.ui.credentialsButton.setText("Load credentials")
+            self.ui.credentialsButton.setToolTip("Download credentials from radio.pw-sat.pl and load file"
+                                                 " clicking this button.")
+
+        elif not auth_status and not self.validate_credentials.file_blank():
             icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid-disabled.svg"), QtGui.QIcon.Normal,
                            QtGui.QIcon.Off)
             self.ui.credentialsButton.setText("Cannot sign in, trying again...")
             self.ui.credentialsButton.setToolTip("Cannot sign in - restart application, check internet connection or"
-                                                 " download application from radio.pw-sat.pl again.")
+                                                 " download and load new credentials from radio.pw-sat.pl.")
         self.ui.credentialsButton.setIcon(icon)
 
     def closeEvent(self, event):

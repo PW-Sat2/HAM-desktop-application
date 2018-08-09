@@ -107,7 +107,6 @@ class Ui_mainWindow(object):
         self.gridLayout_2.addWidget(self.serverConnectionStatusIconLabel, 0, 2, 1, 1)
         self.credentialsButton = QtGui.QPushButton(self.gridLayoutWidget)
         self.credentialsButton.setMinimumSize(QtCore.QSize(0, 50))
-        self.credentialsButton.setToolTip(_fromUtf8(""))
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/credentials/img/key-solid.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.credentialsButton.setIcon(icon2)
@@ -280,7 +279,7 @@ class Ui_mainWindow(object):
         mainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(mainWindow)
-        self.ribbon.setCurrentIndex(0)
+        self.ribbon.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
@@ -289,6 +288,7 @@ class Ui_mainWindow(object):
         self.serverConnectionStatusTextLabel.setText(_translate("mainWindow", "Online", None))
         self.helpAccountButton.setToolTip(_translate("mainWindow", "Help on Account", None))
         self.serverConnectionStatusIconLabel.setToolTip(_translate("mainWindow", "Server radio.pw-sat.pl is online", None))
+        self.credentialsButton.setToolTip(_translate("mainWindow", "Click the button to load new credentials...", None))
         self.credentialsButton.setText(_translate("mainWindow", "ham-mail@pw-sat.pl", None))
         self.ribbon.setTabText(self.ribbon.indexOf(self.tab), _translate("mainWindow", "Account", None))
         self.signalSourceDropdownButton.setItemText(0, _translate("mainWindow", "FunCube 2.0", None))

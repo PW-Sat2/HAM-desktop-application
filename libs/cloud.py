@@ -22,7 +22,8 @@ class Cloud:
         self.headers = {'content-type': 'application/json'}
         self.base_url = base_url
         self.credentials = None
-        self.load_credentials(credentials_path)
+        self.credentials_path = credentials_path
+        self.load_credentials()
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
     def authenticate(self):
@@ -40,9 +41,10 @@ class Cloud:
                    'timestamp': int(packet['timestamp']*1000),
                    'traffic': 'Rx'}
 
-        response = requests.put(url, data=json.dumps(payload), headers=self.headers, cookies=self.authenticate(), timeout=5)
+        response = requests.put(url, data=json.dumps(payload), headers=self.headers, cookies=self.authenticate(),
+                                timeout=5)
         return CloudUploadResponse(response)
 
-    def load_credentials(self, path):
-        with open(path) as f:
+    def load_credentials(self):
+        with open(self.credentials_path) as f:
             self.credentials = json.load(f)
