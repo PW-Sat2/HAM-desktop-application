@@ -152,9 +152,11 @@ class StartQT4(QtGui.QMainWindow):
 
     def __autosend_handle(self):
         if self.ui.autoUploadToolButton.isChecked():
+            self.ui.autoUploadToolButton.setText("Auto-Upload Enabled")
             self.send_active.set()
         else:
             self.send_active.clear()
+            self.ui.autoUploadToolButton.setText("Auto-Upload Disabled")
 
     def __resend_errors_handle(self):
         upload = UploadCloudError(self.stop_event, self.config.config, self.cloud_rx_queue, self.error_queue)
