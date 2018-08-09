@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>PW-Sat2 Ground Station Main Window</string>
+   <string>PW-Sat2 Ground Station - Main Window</string>
   </property>
   <property name="windowIcon">
    <iconset resource="img_pix.qrc">
