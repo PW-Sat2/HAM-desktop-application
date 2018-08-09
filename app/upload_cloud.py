@@ -34,12 +34,12 @@ class UploadCloud(Thread):
                         self.cloud_tx_queue.appendleft(data)
                         if data.upload_status is False:
                             self.error_queue.appendleft(data)
-                            print "added to error queue because of credentials"
+                            self.logger.log(logging.DEBUG, "added to error queue because of credentials")
                     except requests.ConnectionError, requests.ReadTimeout:
                         data.upload_status = False
                         self.error_queue.appendleft(data)
                         self.cloud_tx_queue.appendleft(data)
-                        print "added to error queue because of internet"
+                        self.logger.log(logging.DEBUG, "added to error queue because of internet")
                 except IndexError:
                     time.sleep(1)
         self.logger.log(logging.DEBUG, "Finished UploadCloud")
@@ -55,6 +55,7 @@ class UploadCloudError(Thread):
         self.cloud_tx_queue = cloud_tx_queue
         self.error_queue = error_queue
         self.error_buffer = []
+        self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
     def run(self):
         while len(self.error_queue) != 0 and not self.stop_event.wait(0):
