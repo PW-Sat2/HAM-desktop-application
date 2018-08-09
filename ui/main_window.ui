@@ -633,7 +633,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Upload frames saved in *.frames file</string>
+              <string notr="true">Click to try again sending frames that have not been successfully sent (labeled with error).</string>
              </property>
              <property name="text">
               <string>Re-send Unsuccessful</string>
