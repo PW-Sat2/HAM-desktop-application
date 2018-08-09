@@ -125,7 +125,7 @@ class StartQT4(QtGui.QMainWindow):
         self.auth_status_thread.state_signal.connect(self.set_auth_status)
         self.auth_status_thread.start()
 
-        self.ui.credentialsButton.clicked.connect(self.__credentials_file_load_check_propagate)
+        self.ui.credentialsLoadButton.clicked.connect(self.__credentials_file_load_check_propagate)
 
     def __credentials_file_load_check_propagate(self):
         result = LoadCredentialsFile.load_with_dialog()

@@ -108,7 +108,77 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="4">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="3">
+            <widget class="QLabel" name="serverConnectionStatusIconLabel">
+             <property name="minimumSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Server radio.pw-sat.pl is online</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="credentialsButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Account info</string>
+             </property>
+             <property name="text">
+              <string>ham-mail@pw-sat.pl</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/credentials/img/key-solid.svg</normaloff>:/credentials/img/key-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
             <widget class="Line" name="line_2">
              <property name="minimumSize">
               <size>
@@ -127,7 +197,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
+           <item row="0" column="4">
             <widget class="QLabel" name="serverConnectionStatusTextLabel">
              <property name="minimumSize">
               <size>
@@ -152,7 +222,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
+           <item row="0" column="6">
             <widget class="QPushButton" name="helpAccountButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -184,36 +254,8 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="serverConnectionStatusIconLabel">
-             <property name="minimumSize">
-              <size>
-               <width>35</width>
-               <height>35</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>35</width>
-               <height>35</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Server radio.pw-sat.pl is online</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="credentialsButton">
+           <item row="0" column="1">
+            <widget class="QPushButton" name="credentialsLoadButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -224,7 +266,7 @@
               <string>Click the button to load new credentials...</string>
              </property>
              <property name="text">
-              <string>ham-mail@pw-sat.pl</string>
+              <string>Load credentials from file</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -237,19 +279,6 @@
               </size>
              </property>
             </widget>
-           </item>
-           <item row="0" column="1">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </widget>
@@ -268,6 +297,9 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <item row="0" column="0">
             <widget class="QComboBox" name="signalSourceDropdownButton">
              <property name="minimumSize">
@@ -383,6 +415,9 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <item row="0" column="0">
             <widget class="QPushButton" name="runDemodulatorButton">
              <property name="minimumSize">
@@ -471,6 +506,9 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <item row="0" column="4">
             <spacer name="horizontalSpacer">
              <property name="orientation">
