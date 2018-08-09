@@ -318,7 +318,7 @@ class Ui_mainWindow(object):
         self.autoUploadToolButton.setToolTip(_translate("mainWindow", "Send frames from the list to cloud", None))
         self.autoUploadToolButton.setText(_translate("mainWindow", "Auto-Upload Enabled", None))
         self.loadFramesFromFileButton.setToolTip(_translate("mainWindow", "Upload frames saved in *.frames file", None))
-        self.loadFramesFromFileButton.setText(_translate("mainWindow", "Load Frames From File", None))
+        self.loadFramesFromFileButton.setText(_translate("mainWindow", "Load From File", None))
         self.sendUnsuccessfulButton.setText(_translate("mainWindow", "Re-Upload Failed", None))
         self.ribbon.setTabText(self.ribbon.indexOf(self.tab_5), _translate("mainWindow", "Cloud Upload", None))
         self.framesListWidget.setSortingEnabled(False)

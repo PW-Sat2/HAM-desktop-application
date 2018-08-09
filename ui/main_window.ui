@@ -629,7 +629,7 @@
               <string>Upload frames saved in *.frames file</string>
              </property>
              <property name="text">
-              <string>Load Frames From File</string>
+              <string>Load From File</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
