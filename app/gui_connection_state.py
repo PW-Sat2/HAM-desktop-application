@@ -14,18 +14,19 @@ class CheckAuthThread(QtCore.QThread):
         self.cloud = Cloud(config['CLOUD_URL'], config['CREDENTIALS_FILE'])
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
-    def __check(self):
+    def check(self):
         try:
             auth_res = self.cloud.authenticate()
             self.state_signal.emit(self.cloud.validate_auth(auth_res))
+            print self.cloud.validate_auth(auth_res)
         except:
             self.state_signal.emit(False)
-            pass
+            print "False except"
 
     def run(self):
-        self.__check()
+        self.check()
         while not self.stop_event.wait(30):
-            self.__check()
+            self.check()
         self.logger.log(logging.DEBUG, "Finished CheckAuthThread")
 
 
