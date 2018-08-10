@@ -59,7 +59,6 @@ class UiFrameListWidgetFactory:
             UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server"))
 
         widget.uploadStatusIconButton.clicked.connect(lambda: webbrowser.open(UiFrameListWidgetFactory.__generate_uuid_link(uuid, server)))
-        print UiFrameListWidgetFactory.__generate_uuid_link(uuid, server)
         return widget
 
     @staticmethod
