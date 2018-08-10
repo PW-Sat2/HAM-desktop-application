@@ -82,7 +82,14 @@ class Ui_mainWindow(object):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_2.addItem(spacerItem, 0, 2, 1, 1)
         self.credentialsButton = QtGui.QPushButton(self.gridLayoutWidget)
+        self.credentialsButton.setEnabled(True)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.credentialsButton.sizePolicy().hasHeightForWidth())
+        self.credentialsButton.setSizePolicy(sizePolicy)
         self.credentialsButton.setMinimumSize(QtCore.QSize(0, 50))
+        self.credentialsButton.setMaximumSize(QtCore.QSize(250, 16777215))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/credentials/img/key-solid.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.credentialsButton.setIcon(icon1)
@@ -289,7 +296,7 @@ class Ui_mainWindow(object):
         mainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(mainWindow)
-        self.ribbon.setCurrentIndex(3)
+        self.ribbon.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
