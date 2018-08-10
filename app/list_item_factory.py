@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 from ui.frame_list_element import UiFrameListWidget
 from libs.frame_recognizer import FrameRecognizer
 from ui.frame_colours import get_frame_type_colour
+import webbrowser
 
 
 class UiFrameListWidgetFactory:
@@ -48,7 +49,7 @@ class UiFrameListWidgetFactory:
                        QtGui.QIcon.Off)
         widget.uploadStatusIconButton.setIcon(icon)
 
-        widget.uuidValueLabel.setText(UiFrameListWidgetFactory.__generate_uuid_link(uuid, server))
+        widget.uuidValueLabel.setText(UiFrameListWidgetFactory.__generate_uuid_formatted_link(uuid, server))
 
         widget.uploadStatusIconButton.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Frame send to cloud, thanks!"))
@@ -56,6 +57,9 @@ class UiFrameListWidgetFactory:
             UiFrameListWidgetFactory.__generate_tooltip("Click to see frame contents"))
         widget.uuidTextLabel.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server"))
+
+        widget.uploadStatusIconButton.clicked.connect(lambda: webbrowser.open(UiFrameListWidgetFactory.__generate_uuid_link(uuid, server)))
+        print UiFrameListWidgetFactory.__generate_uuid_link(uuid, server)
         return widget
 
     @staticmethod
@@ -72,9 +76,13 @@ class UiFrameListWidgetFactory:
         return widget
 
     @staticmethod
-    def __generate_uuid_link(uuid, server):
+    def __generate_uuid_formatted_link(uuid, server):
         return "<a style = \"color: #414141;\" href =\"{0}/telemetry/detailed/frame/{1}\">{2}</a>".format(
             server, uuid, uuid)
+
+    @staticmethod
+    def __generate_uuid_link(uuid, server):
+        return "{0}/telemetry/detailed/frame/{1}".format(server, uuid)
 
     @staticmethod
     def __generate_tooltip(text):
