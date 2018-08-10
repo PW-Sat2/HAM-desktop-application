@@ -40,14 +40,17 @@ class FrameFile:
             return f.readlines()
 
     def read_packets(self):
-        raw = self.read_raw()
-        packets = []
-        for item in raw:
-            try:
-                packets.append(self.__decode(item))
-                self.logger.log(logging.DEBUG, "Processed packet: " + item)
-            except ValueError as error:
-                self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
-            except TypeError as error:
-                self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
-        return packets
+        try:
+            raw = self.read_raw()
+            packets = []
+            for item in raw:
+                try:
+                    packets.append(self.__decode(item))
+                    self.logger.log(logging.DEBUG, "Processed packet: " + item)
+                except ValueError as error:
+                    self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
+                except TypeError as error:
+                    self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
+            return packets
+        except IOError:
+            return None

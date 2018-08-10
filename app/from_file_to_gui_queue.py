@@ -38,6 +38,9 @@ class FromFileToGuiQueueThread(Thread):
     def run(self):
         self.logger.log(logging.DEBUG, "Starting thread FromFileToGuiQueueThread")
         packets = self.reader.read_packets()
-        for packet in packets:
-            self.gui_queue.append(packet)
+        try:
+            for packet in packets:
+                self.gui_queue.append(packet)
+        except TypeError:
+            self.logger.log(logging.DEBUG, "Empty packets list")
         self.logger.log(logging.DEBUG, "Finished FromFileToGuiQueueThread")
