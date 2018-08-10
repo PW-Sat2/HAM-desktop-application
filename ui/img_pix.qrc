@@ -2,6 +2,10 @@
   <qresource prefix="cloud-upload">
     <file>img/cloud-upload-alt-solid.svg</file>
   </qresource>
+  <qresource prefix="user">
+    <file>img/user-alt-slash-solid.svg</file>
+    <file>img/user-check-solid.svg</file>
+  </qresource>
   <qresource prefix="numbers">
     <file>img/2.svg</file>
     <file>img/3.svg</file>
