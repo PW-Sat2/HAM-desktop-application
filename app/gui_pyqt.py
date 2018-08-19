@@ -46,6 +46,8 @@ class StartQT4(QtGui.QMainWindow):
         self.__set_send_active()
         self.__connect_demodulator_button()
 
+        self.ui.credentialsButton.clicked.connect(self.auth_status_thread.check)
+
         self.validate_credentials = ValidateCredentials(self.config.config['CREDENTIALS_FILE'])
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
