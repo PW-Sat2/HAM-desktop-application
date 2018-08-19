@@ -69,12 +69,12 @@ class UploadCloudError(Thread):
                 data.upload_status = upload_result.status
                 self.cloud_tx_queue.append(data)
                 if data.upload_status is False:
-                    self.error_queue.append(data)
+                    self.error_queue.appendleft(data)
                     print "again added to error queue"
             except IndexError:
                 time.sleep(1)
             except requests.ConnectionError:
-                self.error_queue.append(data)
+                self.error_queue.appendleft(data)
                 print "again added to error queue"
 
         self.logger.log(logging.DEBUG, "Finished UploadCloudError")
