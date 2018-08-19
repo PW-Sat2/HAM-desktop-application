@@ -16,6 +16,7 @@ from app.pyinstaller_hacks import resource_path
 import shutil
 import argparse
 from ui.credentials_choose import CredentialsChooseWidget
+from app.watchdog import Watchdog
 
 
 '''TO DO: Temporary, ugly thing to unpack some data from exe
@@ -68,6 +69,11 @@ if __name__ == "__main__":
     hamApp = StartQT4(stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue,
                       send_active, upload_cloud_thread)
     hamApp.show()
+
+    watchdog_thread = Watchdog(stop_event, file_save_thread, frames_receiver_thread, upload_cloud_thread,
+                               hamApp.auth_status_thread , hamApp.conn_status_thread,
+                               hamApp.item_widgets_thread, hamApp.item_widgets_update_thread)
+    watchdog_thread.start()
 
     status = app.exec_()
     stop_event.set()
