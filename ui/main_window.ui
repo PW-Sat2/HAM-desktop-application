@@ -74,7 +74,7 @@
          <string notr="true">QTabBar::tab { height: 35px;}</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="iconSize">
          <size>
@@ -104,13 +104,83 @@
             <x>0</x>
             <y>0</y>
             <width>631</width>
-            <height>61</height>
+            <height>64</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
            <property name="spacing">
             <number>0</number>
            </property>
+           <item row="0" column="5">
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="serverConnectionStatusIconLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>Server radio.pw-sat.pl is online</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="serverConnectionStatusTextLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>Server radio.pw-sat.pl is online</string>
+               </property>
+               <property name="text">
+                <string>Online</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
            <item row="0" column="2">
             <widget class="QPushButton" name="credentialsLoadButton">
              <property name="minimumSize">
@@ -188,7 +258,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
+               <width>5</width>
                <height>20</height>
               </size>
              </property>
@@ -223,7 +293,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>10</width>
+               <width>5</width>
                <height>20</height>
               </size>
              </property>
@@ -271,68 +341,11 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>10</width>
+               <width>5</width>
                <height>20</height>
               </size>
              </property>
             </spacer>
-           </item>
-           <item row="0" column="5">
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <item>
-              <widget class="QLabel" name="serverConnectionStatusIconLabel">
-               <property name="minimumSize">
-                <size>
-                 <width>35</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>35</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Server radio.pw-sat.pl is online</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="pixmap">
-                <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
-               </property>
-               <property name="scaledContents">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="serverConnectionStatusTextLabel">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="toolTip">
-                <string>Server radio.pw-sat.pl is online</string>
-               </property>
-               <property name="text">
-                <string>Online</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
            </item>
           </layout>
          </widget>
@@ -586,7 +599,7 @@
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>40</width>
+               <width>10</width>
                <height>20</height>
               </size>
              </property>
