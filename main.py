@@ -39,7 +39,7 @@ parser.add_argument("-v", "--verbose", required=False, default=False, action="st
                     help="Increase output verbosity.")
 args = parser.parse_args()
 
-root_logger = setup_log(args.verbose)
+setup_log(args.verbose)
 config = imp.load_source('config', 'config.py')
 
 
