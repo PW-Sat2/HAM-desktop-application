@@ -1,6 +1,5 @@
 import sys
 import os
-import shutil
 
 
 def resource_path(relative_path):
