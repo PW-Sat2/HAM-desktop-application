@@ -8,6 +8,19 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 from app.validate_credentials import ValidateCredentials
 
 
+class EmptyPath:
+    pass
+
+class WrongOrEmptyCredentials:
+    pass
+
+class CorrectCredentials:
+    pass
+
+class UnknownError:
+    pass
+
+
 class LoadCredentialsFile:
     @staticmethod
     def load_with_dialog():
@@ -16,16 +29,20 @@ class LoadCredentialsFile:
             file_dialog = QtGui.QFileDialog()
             path = file_dialog.getOpenFileName(None, 'OpenFile', '.', "Credentials file (*.json)")
             logger.log(logging.DEBUG, "Selected file: " + path)
-            validate_credentials = ValidateCredentials(path)
 
-            if validate_credentials.file_valid() and not validate_credentials.file_blank():
-                logger.log(logging.DEBUG, "File valid")
-                shutil.copyfile(path, 'credentials.json')
-                logger.log(logging.DEBUG, "File copied")
-                return True
+            if path == "":
+                return EmptyPath
             else:
-                logger.log(logging.DEBUG, "Wrong file")
-                return False
+                validate_credentials = ValidateCredentials(path)
+
+                if validate_credentials.file_valid() and not validate_credentials.file_blank():
+                    logger.log(logging.DEBUG, "File valid")
+                    shutil.copyfile(path, 'credentials.json')
+                    logger.log(logging.DEBUG, "File copied")
+                    return CorrectCredentials
+                else:
+                    logger.log(logging.DEBUG, "Wrong file")
+                    return WrongOrEmptyCredentials
         except:
             logger.log(logging.DEBUG, "Load file exception")
-            return False
+            return UnknownError

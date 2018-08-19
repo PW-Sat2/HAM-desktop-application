@@ -7,13 +7,14 @@ from app.packet_list_data import PacketListData
 from app.from_file_to_gui_queue import FromFileToGuiQueueThreadFactory
 from app.queue_to_signal import GetFromQueueToSignalThread
 from app.handle_exit import ExitMessageHandler
-import json
 import webbrowser
 from ui.frame_list_empty_element import UiFrameListEmptyWidget
 from app.validate_credentials import ValidateCredentials
 from ui.credentials_choose import CredentialsChooseWidget
-from app.load_credentials_file import LoadCredentialsFile
+from app.load_credentials_file import LoadCredentialsFile, WrongOrEmptyCredentials, CorrectCredentials, UnknownError
+
 import logging
+from libs.gui_helpers import set_btn_icon
 
 
 class StartQT4(QtGui.QMainWindow):
@@ -129,15 +130,29 @@ class StartQT4(QtGui.QMainWindow):
 
     def __credentials_file_load_check_propagate(self):
         result = LoadCredentialsFile.load_with_dialog()
-        if result:
+        if result is CorrectCredentials:
             self.auth_status_thread.cloud.load_credentials()
             self.upload_cloud_thread.cloud.load_credentials()
             self.auth_status_thread.check()
             self.logger.log(logging.DEBUG, "Updated credential file")
-        else:
-            self.logger.log(logging.DEBUG, "Not updated credential file")
-
+        elif result is WrongOrEmptyCredentials:
+            self.logger.log(logging.DEBUG, "Not updated credential file - wrong or empty file")
+            self.__show_dialog_credentials_not_loaded_wrong_file()
+        elif result is UnknownError:
+            self.logger.log(logging.DEBUG, "Not updated credential file - wrong or empty path")
+            self.__show_dialog_credentials_not_loaded_unknown_error()
         return result
+
+    def __show_dialog_credentials_not_loaded_wrong_file(self):
+        msg = "<h2>Credentials file not loaded!</h2>" \
+              "Credentials file is empty or corrupted.<br>" \
+              "Go to radio.pw-sat.pl and generate a new credentials file."
+        QtGui.QMessageBox.warning(None, 'Credentials file not loaded!', msg, QtGui.QMessageBox.Ok)
+
+    def __show_dialog_credentials_not_loaded_unknown_error(self):
+        msg = "<h2>Credentials file not loaded!</h2>" \
+              "Unknown error occured!"
+        QtGui.QMessageBox.warning(None, 'Credentials file not loaded!', msg, QtGui.QMessageBox.Ok)
 
     def __set_send_active(self):
         self.send_active.set()
@@ -155,10 +170,7 @@ class StartQT4(QtGui.QMainWindow):
         self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-offline/img/cloud-offline.svg"))
 
     def __init_credential_buttons(self):
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid-disabled.svg"), QtGui.QIcon.Normal,
-                       QtGui.QIcon.Off)
-        self.ui.credentialsButton.setIcon(icon)
+        set_btn_icon(self.ui.credentialsButton, ":/user/img/user-alt-slash-solid.svg")
         self.ui.credentialsButton.setText("Signing in...")
         self.ui.credentialsButton.setToolTip("Signing in in progress...")
 
@@ -219,30 +231,24 @@ class StartQT4(QtGui.QMainWindow):
             self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-offline/img/cloud-offline.svg"))
 
     def set_auth_status(self, auth_status):
-        icon = QtGui.QIcon()
         self.validate_credentials.load()
 
         if auth_status:
-            icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid.svg"), QtGui.QIcon.Normal,
-                           QtGui.QIcon.Off)
-            self.ui.credentialsButton.setIcon(icon)
+            set_btn_icon(self.ui.credentialsButton, ":/user/img/user-check-solid.svg")
             self.ui.credentialsButton.setText(self.validate_credentials.credentials_data["identifier"])
             self.ui.credentialsButton.setToolTip("Signed up successfully")
 
         elif self.validate_credentials.file_blank():
-            icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid-disabled.svg"), QtGui.QIcon.Normal,
-                           QtGui.QIcon.Off)
+            set_btn_icon(self.ui.credentialsButton, ":/user/img/user-alt-slash-solid.svg")
             self.ui.credentialsButton.setText("Load credentials")
             self.ui.credentialsButton.setToolTip("Download credentials from radio.pw-sat.pl and load file"
-                                                 " clicking this button.")
+                                                 " clicking button load credentials from file.")
 
         elif not auth_status and not self.validate_credentials.file_blank():
-            icon.addPixmap(QtGui.QPixmap(":/credentials/img/key-solid-disabled.svg"), QtGui.QIcon.Normal,
-                           QtGui.QIcon.Off)
+            set_btn_icon(self.ui.credentialsButton, ":/user/img/user-alt-slash-solid.svg")
             self.ui.credentialsButton.setText("Cannot sign in, trying again...")
             self.ui.credentialsButton.setToolTip("Cannot sign in - restart application, check internet connection or"
                                                  " download and load new credentials from radio.pw-sat.pl.")
-        self.ui.credentialsButton.setIcon(icon)
 
     def closeEvent(self, event):
         self.exit_message_handler.exit_action(event)

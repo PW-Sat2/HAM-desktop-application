@@ -18,10 +18,8 @@ class CheckAuthThread(QtCore.QThread):
         try:
             auth_res = self.cloud.authenticate()
             self.state_signal.emit(self.cloud.validate_auth(auth_res))
-            print self.cloud.validate_auth(auth_res)
         except:
             self.state_signal.emit(False)
-            print "False except"
 
     def run(self):
         self.check()
