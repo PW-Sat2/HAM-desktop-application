@@ -38,8 +38,6 @@ class UiFrameListWidgetFactory:
             UiFrameListWidgetFactory.__generate_tooltip("Frame not send to cloud yet!"))
         widget.uuidValueLabel.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Send the frame to cloud to get an uuid"))
-        widget.uuidTextLabel.setToolTip(
-            UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server"))
         return widget
 
     @staticmethod
@@ -54,9 +52,7 @@ class UiFrameListWidgetFactory:
         widget.uploadStatusIconButton.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Frame send to cloud, thanks!"))
         widget.uuidValueLabel.setToolTip(
-            UiFrameListWidgetFactory.__generate_tooltip("Click to see frame contents"))
-        widget.uuidTextLabel.setToolTip(
-            UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server"))
+            UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server - click to see frame contents"))
 
         widget.uploadStatusIconButton.clicked.connect(lambda: webbrowser.open(UiFrameListWidgetFactory.__generate_uuid_link(uuid, server)))
         return widget
@@ -76,7 +72,7 @@ class UiFrameListWidgetFactory:
 
     @staticmethod
     def __generate_uuid_formatted_link(uuid, server):
-        return "<a style = \"color: #414141;\" href =\"{0}/telemetry/detailed/frame/{1}\">{2}</a>".format(
+        return "UUID: <a style = \"color: #414141;\" href =\"{0}/telemetry/detailed/frame/{1}\">{2}</a>".format(
             server, uuid, uuid)
 
     @staticmethod
