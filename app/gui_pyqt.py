@@ -183,6 +183,7 @@ class StartQT4(QtGui.QMainWindow):
         return False
 
     def __process_frame_data(self, packet):
+        # remove welcome widget when the first frame is received
         if self.__first_frame():
             self.__remove_last_widget()
 
@@ -220,8 +221,8 @@ class StartQT4(QtGui.QMainWindow):
         upload = UploadCloudError(self.stop_event, self.config.config, self.cloud_rx_queue, self.error_queue)
         upload.start()
 
-    def set_connection_status(self, status):
-        if status:
+    def set_connection_status(self, status_connected):
+        if status_connected:
             self.ui.serverConnectionStatusTextLabel.setToolTip("Server radio.pw-sat.pl is available")
             self.ui.serverConnectionStatusTextLabel.setText("Online")
             self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is available")
