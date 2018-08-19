@@ -32,10 +32,10 @@ class UiFrameListWidgetFactory:
                        QtGui.QIcon.Off)
         widget.uploadStatusIconButton.setIcon(icon)
 
-        widget.uuidValueLabel.setText("-")
+        widget.uuidValueLabel.setText("Frame not sent to cloud yet!")
 
         widget.uploadStatusIconButton.setToolTip(
-            UiFrameListWidgetFactory.__generate_tooltip("Frame not send to cloud yet!"))
+            UiFrameListWidgetFactory.__generate_tooltip("Activate option \"Auto-send frame\""))
         widget.uuidValueLabel.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Send the frame to cloud to get an uuid"))
         return widget
@@ -50,7 +50,7 @@ class UiFrameListWidgetFactory:
         widget.uuidValueLabel.setText(UiFrameListWidgetFactory.__generate_uuid_formatted_link(uuid, server))
 
         widget.uploadStatusIconButton.setToolTip(
-            UiFrameListWidgetFactory.__generate_tooltip("Frame send to cloud, thanks!"))
+            UiFrameListWidgetFactory.__generate_tooltip("Frame sent to cloud, thanks!"))
         widget.uuidValueLabel.setToolTip(
             UiFrameListWidgetFactory.__generate_tooltip("Frame identifier on server - click to see frame contents"))
 
