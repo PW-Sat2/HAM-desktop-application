@@ -74,7 +74,7 @@
          <string notr="true">QTabBar::tab { height: 35px;}</string>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <property name="iconSize">
          <size>
@@ -414,7 +414,7 @@
              </item>
              <item>
               <property name="text">
-               <string>USRP</string>
+               <string>IQ File</string>
               </property>
              </item>
              <item>
@@ -424,7 +424,7 @@
              </item>
              <item>
               <property name="text">
-               <string>IQ Sink</string>
+               <string>USRP</string>
               </property>
              </item>
             </widget>
