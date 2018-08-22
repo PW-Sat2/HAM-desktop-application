@@ -62,6 +62,12 @@ class StartQT4(QtGui.QMainWindow):
     def __add_credentials_widget(self):
         self.ui.framesListWidget.setSelectionMode(QtGui.QAbstractItemView.NoSelection)
         item_widget = CredentialsChooseWidget()
+        text = "<html><head/><body><p><span style=\" " \
+                "font-size:14pt; font-weight:600;\">Sign in and download credentials</span><br/>" \
+                "Go to our page {0} and download file with your credentials to enable " \
+                "upload to cloud.</p></body></html>".format(self.config.config['CLOUD_URL'])
+
+        item_widget.label_6.setText(text)
 
         item_widget.choose_credentials_file_button.clicked.connect(self.__handle_credentials_file_widget_button)
 
@@ -71,7 +77,7 @@ class StartQT4(QtGui.QMainWindow):
         self.ui.framesListWidget.setItemWidget(item, item_widget)
 
     def __handle_credentials_file_widget_button(self):
-        if self.__credentials_file_load_check_propagate():
+        if self.__credentials_file_load_check_propagate() == CorrectCredentials:
             self.__remove_last_widget()
             self.__add_welcome_widget()
         else:
