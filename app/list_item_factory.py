@@ -72,7 +72,7 @@ class UiFrameListWidgetFactory:
 
     @staticmethod
     def __generate_uuid_formatted_link(uuid, server):
-        return "UUID: <a style = \"color: #414141;\" href =\"{0}/telemetry/detailed/frame/{1}\">{2}</a>".format(
+        return "UUID: <a style = \"color: #414141;\" href =\"{0}/communication/frame/{1}\">{2}</a>".format(
             server, uuid, uuid)
 
     @staticmethod
