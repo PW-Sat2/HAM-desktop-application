@@ -12,9 +12,11 @@ from ui.frame_list_empty_element import UiFrameListEmptyWidget
 from app.validate_credentials import ValidateCredentials
 from ui.credentials_choose import CredentialsChooseWidget
 from app.load_credentials_file import LoadCredentialsFile, WrongOrEmptyCredentials, CorrectCredentials, UnknownError
+from threading import Thread
 
 import logging
 from libs.gui_helpers import set_btn_icon
+import os
 
 
 class StartQT4(QtGui.QMainWindow):
@@ -45,6 +47,7 @@ class StartQT4(QtGui.QMainWindow):
         self.__create_start_threads()
         self.__set_send_active()
         self.__connect_demodulator_button()
+        self.__connect_run_source_button()
 
         self.ui.credentialsButton.clicked.connect(self.auth_status_thread.check)
 
@@ -102,8 +105,35 @@ class StartQT4(QtGui.QMainWindow):
     def __connect_demodulator_button(self):
         self.ui.runDemodulatorButton.clicked.connect(self.__run_demodulator)
 
+    def __connect_run_source_button(self):
+        self.ui.runSourceButton.clicked.connect(self.__run_source)
+
+    def __run_source(self):
+        item = self.ui.signalSourceDropdownButton.currentText()
+        if item == "IQ File":
+            self.source_thread = Thread(target=self.__source_iq_file_command)
+            self.source_thread.start()
+        elif item == "FunCube 2.0":
+            self.source_thread = Thread(target=self.__source_fcd_plus_command)
+            self.source_thread.start()
+        else:
+            print "Not implemented yet!"
+
+    def __source_iq_file_command(self):
+        print self.config.config['GRC_BINARY'] + ' -s "iq_file"'
+        os.system(self.config.config['GRC_BINARY'] + ' -s "iq_file"')
+
+    def __source_fcd_plus_command(self):
+        print self.config.config['GRC_BINARY'] + ' -s "fcd+"'
+        os.system(self.config.config['GRC_BINARY'] + ' -s "fcd+"')
+
+    def __demodulator_command(self):
+        print self.config.config['GRC_BINARY'] + ' -s "demodulator"'
+        os.system(self.config.config['GRC_BINARY'] + ' -s "demodulator"')
+
     def __run_demodulator(self):
-        pass
+        self.demodulator_thread = Thread(target=self.__demodulator_command)
+        self.demodulator_thread.start()
 
     def __connect_help_buttons(self):
         self.ui.helpAccountButton.clicked.connect(lambda: webbrowser.open(self.config.config['HELP_ACCOUNT']))
