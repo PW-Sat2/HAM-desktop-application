@@ -2,6 +2,7 @@ from PyQt4 import QtCore, QtGui
 from libs.cloud import Cloud
 import ping
 import logging
+import os
 
 
 class CheckAuthThread(QtCore.QThread):
@@ -11,7 +12,7 @@ class CheckAuthThread(QtCore.QThread):
     def __init__(self, stop_event, config):
         QtCore.QThread.__init__(self)
         self.stop_event = stop_event
-        self.cloud = Cloud(config['CLOUD_URL'], config['CREDENTIALS_FILE'])
+        self.cloud = Cloud(config['CLOUD_URL'], os.path.join(os.path.dirname(__file__), '..', config['CREDENTIALS_FILE']))
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
     def check(self):

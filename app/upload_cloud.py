@@ -12,7 +12,7 @@ from libs.cloud import Cloud
 class UploadCloud(Thread):
     def __init__(self, stop_event, config, cloud_tx_queue, cloud_rx_queue, error_queue, send_active):
         Thread.__init__(self)
-        credentials_path = config['CREDENTIALS_FILE']
+        credentials_path = os.path.join(os.path.dirname(__file__), '..', config['CREDENTIALS_FILE'])
         base_url = config['CLOUD_URL']
         self.stop_event = stop_event
         self.cloud = Cloud(base_url, credentials_path)
@@ -48,7 +48,7 @@ class UploadCloud(Thread):
 class UploadCloudError(Thread):
     def __init__(self, stop_event, config, cloud_tx_queue, error_queue):
         Thread.__init__(self)
-        credentials_path = config['CREDENTIALS_FILE']
+        credentials_path = os.path.join(os.path.dirname(__file__), '..', config['CREDENTIALS_FILE'])
         base_url = config['CLOUD_URL']
         self.stop_event = stop_event
         self.cloud = Cloud(base_url, credentials_path)

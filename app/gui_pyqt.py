@@ -51,7 +51,7 @@ class StartQT4(QtGui.QMainWindow):
 
         self.ui.credentialsButton.clicked.connect(self.auth_status_thread.check)
 
-        self.validate_credentials = ValidateCredentials(self.config.config['CREDENTIALS_FILE'])
+        self.validate_credentials = ValidateCredentials(os.path.join(os.path.dirname(__file__), '..', self.config.config['CREDENTIALS_FILE']))
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
         if self.validate_credentials.file_blank():
@@ -126,16 +126,16 @@ class StartQT4(QtGui.QMainWindow):
             print "Not implemented yet!"
 
     def __source_iq_file_command(self):
-        print self.config.config['GRC_BINARY'] + ' -s "iq_file"'
-        os.system(self.config.config['GRC_BINARY'] + ' -s "iq_file"')
+        print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"')
+        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"'))
 
     def __source_fcd_plus_command(self):
-        print self.config.config['GRC_BINARY'] + ' -s "fcd+"'
-        os.system(self.config.config['GRC_BINARY'] + ' -s "fcd+"')
+        print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "fcd+"')
+        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "fcd+"'))
 
     def __demodulator_command(self):
-        print self.config.config['GRC_BINARY'] + ' -s "demodulator"'
-        os.system(self.config.config['GRC_BINARY'] + ' -s "demodulator"')
+        print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "demodulator"')
+        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "demodulator"'))
 
     def __run_demodulator(self):
         self.demodulator_thread = Thread(target=self.__demodulator_command)
@@ -167,7 +167,7 @@ class StartQT4(QtGui.QMainWindow):
         self.ui.credentialsLoadButton.clicked.connect(self.__credentials_file_load_check_propagate)
 
     def __credentials_file_load_check_propagate(self):
-        result = LoadCredentialsFile.load_with_dialog()
+        result = LoadCredentialsFile.load_with_dialog(self.config.config)
         if result is CorrectCredentials:
             self.auth_status_thread.cloud.load_credentials()
             self.upload_cloud_thread.cloud.load_credentials()

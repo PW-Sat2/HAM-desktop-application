@@ -25,7 +25,7 @@ parser.add_argument("-v", "--verbose", required=False, default=False, action="st
 args = parser.parse_args()
 
 setup_log(args.verbose)
-config = imp.load_source('config', 'config.py')
+config = imp.load_source('config', os.path.join(os.path.dirname(__file__), 'config.py'))
 
 
 if __name__ == "__main__":

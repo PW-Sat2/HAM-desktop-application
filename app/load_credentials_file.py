@@ -24,7 +24,7 @@ class UnknownError:
 
 class LoadCredentialsFile:
     @staticmethod
-    def load_with_dialog():
+    def load_with_dialog(config):
         logger = logging.getLogger(__name__)
         try:
             file_dialog = QtGui.QFileDialog()
@@ -39,7 +39,7 @@ class LoadCredentialsFile:
 
                 if validate_credentials.file_valid() and not validate_credentials.file_blank():
                     logger.log(logging.DEBUG, "File valid")
-                    shutil.copyfile(path, 'credentials.json')
+                    shutil.copyfile(path, os.path.join(os.path.dirname(__file__), '..', config['CREDENTIALS_FILE']))
                     logger.log(logging.DEBUG, "File copied")
                     return CorrectCredentials
                 else:

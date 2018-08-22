@@ -2,6 +2,7 @@ import logging
 import colorlog
 import datetime
 import time
+import os
 
 
 def setup_log(debug):
@@ -10,7 +11,8 @@ def setup_log(debug):
     root_logger_file = logging.getLogger()
     console_handler = colorlog.StreamHandler()
     current_time = datetime.datetime.utcnow().strftime("%Y-%m-%d_%H-%M-%S")
-    file_handler = logging.FileHandler("{0}/pw-sat2_gs_log_{1}.log".format('logs', current_time))
+    file_handler = logging.FileHandler(os.path.join(os.path.dirname(__file__), '..', 'logs', 'pw-sat2_gs_log_{0}.log'
+                                                    .format(current_time)))
 
     formatter = colorlog.ColoredFormatter(
         "%(log_color)s%(asctime)-15s %(levelname)s: [%(name)s] %(message)s",
