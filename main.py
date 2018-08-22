@@ -19,22 +19,6 @@ from ui.credentials_choose import CredentialsChooseWidget
 from app.watchdog import Watchdog
 
 
-'''TO DO: Temporary, ugly thing to unpack some data from exe
- because of cloud side limitations in folders zipping'''
-def unpack_example_frames():
-    try:
-        sys._MEIPASS
-        if not os.path.exists("saved_frames"):
-            os.makedirs("saved_frames")
-
-        for i in range(1, 6):
-            shutil.copyfile(resource_path('saved_frames/test_{0}.frames'.format(i)), 'saved_frames/test_{0}.frames'.format(i))
-    except AttributeError:
-        pass
-
-
-unpack_example_frames()
-
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
                     help="Increase output verbosity.")
