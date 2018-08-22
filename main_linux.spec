@@ -3,6 +3,9 @@
 block_cipher = None
 
 added_files = [
+         ( 'clean_configs/pyinstaller_hack', 'app'),
+         ( 'clean_configs/pyinstaller_hack', 'libs'),
+         ( 'clean_configs/pyinstaller_hack', 'ui'),
          ( 'clean_configs', '.'),
          ( 'grc_linux', 'grc_linux' ),
          ( 'saved_frames', 'saved_frames' ),
