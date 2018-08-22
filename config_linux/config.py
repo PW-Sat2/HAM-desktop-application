@@ -14,5 +14,4 @@ config = dict(
     DEFAULT_SAVE_DIR='saved_frames/',
     IQ_SOURCE=0,
     GRC_BINARY='grc_linux/grc_part'  # for Linux build
-    #GRC_BINARY=''  # for Windows build
 )
