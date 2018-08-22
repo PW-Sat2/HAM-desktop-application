@@ -12,5 +12,7 @@ config = dict(
     HELP_WELCOME_STEP_2='https://pw-sat.pl/do-pobrania/',
     HELP_WELCOME_STEP_3='https://pw-sat.pl/projekt/komunikacja/',
     DEFAULT_SAVE_DIR='saved_frames/',
-    IQ_SOURCE=0
+    IQ_SOURCE=0,
+    GRC_BINARY='grc/grc_part'  # for Linux build
+    #GRC_BINARY=''  # for Windows build
 )
