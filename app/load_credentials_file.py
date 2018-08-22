@@ -3,6 +3,7 @@ import os
 from PyQt4 import QtGui
 import logging
 import shutil
+import unzip_credentials
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 from app.validate_credentials import ValidateCredentials
@@ -27,12 +28,13 @@ class LoadCredentialsFile:
         logger = logging.getLogger(__name__)
         try:
             file_dialog = QtGui.QFileDialog()
-            path = file_dialog.getOpenFileName(None, 'OpenFile', '.', "Credentials file (*.json)")
+            path = str(file_dialog.getOpenFileName(None, 'OpenFile', '.', "Credentials file (*.json *.zip)"))
             logger.log(logging.DEBUG, "Selected file: " + path)
 
             if path == "":
                 return EmptyPath
             else:
+                path = unzip_credentials.unzip_if_needed(path)
                 validate_credentials = ValidateCredentials(path)
 
                 if validate_credentials.file_valid() and not validate_credentials.file_blank():
