@@ -323,17 +323,22 @@
              </property>
              <item>
               <property name="text">
-               <string>IQ File</string>
+               <string>Recorded IQ File</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>FunCube 2.0</string>
+               <string>FUNcube Dongle Pro+</string>
               </property>
              </item>
              <item>
               <property name="text">
                <string>RTL-SDR</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>PlutoSDR</string>
               </property>
              </item>
             </widget>

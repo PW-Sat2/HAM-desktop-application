@@ -117,14 +117,17 @@ class StartQT4(QtGui.QMainWindow):
 
     def __run_source(self):
         item = self.ui.signalSourceDropdownButton.currentText()
-        if item == "IQ File":
+        if item == "Recorded IQ File":
             self.source_thread = Thread(target=self.__source_iq_file_command)
             self.source_thread.start()
-        elif item == "FunCube 2.0":
+        elif item == "FUNcube Dongle Pro+":
             self.source_thread = Thread(target=self.__source_fcd_plus_command)
             self.source_thread.start()
         elif item == "RTL-SDR":
             self.source_thread = Thread(target=self.__source_rtl_sdr_command)
+            self.source_thread.start()
+        elif item == "PlutoSDR":
+            self.source_thread = Thread(target=self.__source_pluto_sdr_command)
             self.source_thread.start()
         else:
             print "Not implemented yet!"
@@ -140,6 +143,10 @@ class StartQT4(QtGui.QMainWindow):
     def __source_rtl_sdr_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "rtl-sdr"')
         subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "rtl-sdr"])
+
+    def __source_pluto_sdr_command(self):
+        print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "pluto"')
+        subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "pluto"])
 
     def __demodulator_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "demodulator"')
