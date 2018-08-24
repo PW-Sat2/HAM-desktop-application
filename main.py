@@ -17,7 +17,7 @@ import shutil
 import argparse
 from ui.credentials_choose import CredentialsChooseWidget
 from app.watchdog import Watchdog
-
+import colorlog
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
