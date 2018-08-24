@@ -13,6 +13,7 @@ from app.validate_credentials import ValidateCredentials
 from ui.credentials_choose import CredentialsChooseWidget
 from app.load_credentials_file import LoadCredentialsFile, WrongOrEmptyCredentials, CorrectCredentials, UnknownError
 from threading import Thread
+import subprocess
 
 import logging
 from libs.gui_helpers import set_btn_icon
@@ -127,15 +128,15 @@ class StartQT4(QtGui.QMainWindow):
 
     def __source_iq_file_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"')
-        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"'))
+        subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "iq_file"])
 
     def __source_fcd_plus_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "fcd+"')
-        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "fcd+"'))
+        subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "fcd+"])
 
     def __demodulator_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "demodulator"')
-        os.system(os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "demodulator"'))
+        subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "demodulator"])
 
     def __run_demodulator(self):
         self.demodulator_thread = Thread(target=self.__demodulator_command)
