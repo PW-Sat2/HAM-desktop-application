@@ -1,7 +1,7 @@
 from PyQt4 import QtCore, QtGui
 from ui.main_window import Ui_mainWindow
 from app.list_item_factory import UiFrameListWidgetFactory
-from app.gui_connection_state import CheckAuthThread, CheckOnlineThread
+from app.gui_connection_state import CheckAuthThread
 from app.upload_cloud import UploadCloudError
 from app.packet_list_data import PacketListData
 from app.from_file_to_gui_queue import FromFileToGuiQueueThreadFactory
@@ -157,10 +157,6 @@ class StartQT4(QtGui.QMainWindow):
         self.item_widgets_update_thread.item_ready.connect(self.__update_list)
         self.item_widgets_update_thread.start()
 
-        self.conn_status_thread = CheckOnlineThread(self.stop_event, self.config.config)
-        self.conn_status_thread.state_signal.connect(self.set_connection_status)
-        self.conn_status_thread.start()
-
         self.auth_status_thread = CheckAuthThread(self.stop_event, self.config.config)
         self.auth_status_thread.state_signal.connect(self.set_auth_status)
         self.auth_status_thread.start()
@@ -200,13 +196,6 @@ class StartQT4(QtGui.QMainWindow):
         self.__connect_help_buttons()
         self.__connect_frame_uploads_buttons()
         self.__init_credential_buttons()
-        self.__init_server_connection_status_buttons()
-
-    def __init_server_connection_status_buttons(self):
-        self.ui.serverConnectionStatusTextLabel.setToolTip("Checking whether radio.pw-sat.pl is available...")
-        self.ui.serverConnectionStatusTextLabel.setText("Checking status")
-        self.ui.serverConnectionStatusIconLabel.setToolTip("Checking whether radio.pw-sat.pl is available...")
-        self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-offline/img/cloud-offline.svg"))
 
     def __init_credential_buttons(self):
         set_btn_icon(self.ui.credentialsButton, ":/user/img/user-alt-slash-solid.svg")
@@ -258,18 +247,6 @@ class StartQT4(QtGui.QMainWindow):
         upload = UploadCloudError(self.stop_event, self.config.config, self.cloud_rx_queue, self.error_queue)
         upload.start()
 
-    def set_connection_status(self, status_connected):
-        if status_connected:
-            self.ui.serverConnectionStatusTextLabel.setToolTip("Server radio.pw-sat.pl is available")
-            self.ui.serverConnectionStatusTextLabel.setText("Online")
-            self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is available")
-            self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-online/img/cloud-online.svg"))
-        else:
-            self.ui.serverConnectionStatusTextLabel.setToolTip("Server radio.pw-sat.pl is not available")
-            self.ui.serverConnectionStatusTextLabel.setText("Offline")
-            self.ui.serverConnectionStatusIconLabel.setToolTip("Server radio.pw-sat.pl is not available")
-            self.ui.serverConnectionStatusIconLabel.setPixmap(QtGui.QPixmap(":/cloud-offline/img/cloud-offline.svg"))
-
     def set_auth_status(self, auth_status):
         self.validate_credentials.load()
 
@@ -280,7 +257,7 @@ class StartQT4(QtGui.QMainWindow):
 
         elif self.validate_credentials.file_blank():
             set_btn_icon(self.ui.credentialsButton, ":/user/img/user-alt-slash-solid.svg")
-            self.ui.credentialsButton.setText("Load credentials")
+            self.ui.credentialsButton.setText("No credentials loaded")
             self.ui.credentialsButton.setToolTip("Download credentials from radio.pw-sat.pl and load file"
                                                  " clicking button load credentials from file.")
 

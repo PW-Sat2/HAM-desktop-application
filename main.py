@@ -55,8 +55,7 @@ if __name__ == "__main__":
     hamApp.show()
 
     watchdog_thread = Watchdog(stop_event, file_save_thread, frames_receiver_thread, upload_cloud_thread,
-                               hamApp.auth_status_thread , hamApp.conn_status_thread,
-                               hamApp.item_widgets_thread, hamApp.item_widgets_update_thread)
+                               hamApp.auth_status_thread, hamApp.item_widgets_thread, hamApp.item_widgets_update_thread)
     watchdog_thread.start()
 
     status = app.exec_()

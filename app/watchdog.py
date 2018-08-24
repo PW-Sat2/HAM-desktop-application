@@ -6,13 +6,13 @@ import logging
 
 class Watchdog(Thread):
     def __init__(self, stop_event, file_save_thread, frames_receiver_thread, upload_cloud_thread,
-                 auth_status_thread, conn_status_thread, item_widgets_thread, item_widgets_update_thread):
+                 auth_status_thread, item_widgets_thread, item_widgets_update_thread):
         Thread.__init__(self)
 
         self.stop_event = stop_event
 
         self.python_threads = [file_save_thread, frames_receiver_thread, upload_cloud_thread]
-        self.qt_threads = [auth_status_thread, conn_status_thread, item_widgets_thread, item_widgets_update_thread]
+        self.qt_threads = [auth_status_thread, item_widgets_thread, item_widgets_update_thread]
 
         self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
