@@ -1,6 +1,5 @@
 from PyQt4 import QtCore, QtGui
 from libs.cloud import Cloud
-import ping
 import logging
 import os
 
