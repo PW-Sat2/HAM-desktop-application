@@ -74,7 +74,7 @@
          <string notr="true">QTabBar::tab { height: 35px;}</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <property name="iconSize">
          <size>
@@ -323,22 +323,17 @@
              </property>
              <item>
               <property name="text">
-               <string>FunCube 2.0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
                <string>IQ File</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>RTL-SDR</string>
+               <string>FunCube 2.0</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>USRP</string>
+               <string>RTL-SDR</string>
               </property>
              </item>
             </widget>
