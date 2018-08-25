@@ -31,4 +31,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='grc_part',
-               icon='/home/pwsat2/GitHub/HAM-desktop-application/grc_part/misc/pw-sat2-logo.ico')
+               icon='../ui/img/pw-sat2-logo.ico')
