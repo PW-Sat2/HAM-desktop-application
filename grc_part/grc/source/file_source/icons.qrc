@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>img/pw-sat2-logo.png</file>
+    <file>img/folder-open-solid.svg</file>
+    <file>img/play-circle-solid.svg</file>
+    <file>img/PW07-wersja-monochromatyczna.svg</file>
+  </qresource>
+</RCC>
