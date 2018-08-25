@@ -45,6 +45,7 @@ pyinstaller grc_part_linux.spec
 echo "GRC packed"
 
 echo "Copy grc_part"
+mkdir $path_to_ham_desktop_application/grc_linux
 cp -r $path_to_ham_desktop_application/grc_part/dist/grc_part/* $path_to_ham_desktop_application/grc_linux
 
 echo "Packing main app"
