@@ -34,7 +34,6 @@ args = parser.parse_args()
 
 setup_log(args.verbose)
 config = imp.load_source('config', os.path.join(application_path, 'config.py'))
-print "working?"
 
 
 if __name__ == "__main__":
