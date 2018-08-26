@@ -1,10 +1,30 @@
 import argparse
 import gnuradio
-import grc.source.file_source.iq_file_main as file_source
-import grc.source.funcube_source.funcube_source as funcube_source
-import grc.source.plutosdr_source.plutosdr_source as plutosdr_source
-import grc.source.rtl_sdr_source.rtl_sdr_source as rtl_sdr_source
-import grc.downlink as demodulator
+
+try:
+    import grc.source.file_source.iq_file_main as file_source
+except:
+    print "Cannot import file_source"
+
+try:
+    import grc.source.funcube_source.funcube_source as funcube_source
+except:
+    print "Cannot import funcube_source"
+
+try:
+    import grc.source.plutosdr_source.plutosdr_source as plutosdr_source
+except:
+    print "Cannot import plutosdr_source"
+
+try:
+    import grc.source.rtl_sdr_source.rtl_sdr_source as rtl_sdr_source
+except:
+    print "Cannot import rtl_sdr_source"
+
+try:
+    import grc.downlink as demodulator
+except:
+    print "Cannot import demodulator"
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
