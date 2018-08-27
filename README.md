@@ -1,8 +1,13 @@
 # HAM-desktop-application
 Application dedicated to HAM amateur radios allowing for frames collection and upload to webapp.
 
+![image](https://user-images.githubusercontent.com/6267528/44672229-1e62b800-aa28-11e8-8ff3-fef2fa952f2f.png)
+
+
 ## Builds (freezes)
 Binaries for supported platforms are available to download on http://radio.pw-sat.pl/communication/desktopsoftware. Binaries contain also freezed GNURadio Companion (GRC) flow graphs. It's strongly recommended to use these binaries.
+
+More help on the operation of application can be found in Wiki: https://github.com/PW-Sat2/HAMRadio/wiki
 
 ## More details about architecture
 
