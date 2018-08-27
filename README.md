@@ -36,4 +36,4 @@ Out-of-tree GRC block you can find in a repository https://github.com/PW-Sat2/gr
 4. Clone https://github.com/PW-Sat2/HAM-desktop-application repository
 5. Adjust non-relative paths in these two files: https://github.com/PW-Sat2/HAM-desktop-application/blob/main-app/main_linux.spec and https://github.com/PW-Sat2/HAM-desktop-application/blob/main-app/grc_part/grc_part_linux.spec
 6. Correct paths to GSControl repository and HAM-desktop-application repositories in file https://github.com/PW-Sat2/HAM-desktop-application/blob/main-app/config.sh
-7. Run `HAM-desktop-application/build_linux.sh` file from this repository. At the end of building process the application should be run.
+7. Run `build_linux.sh` file from this repository. At the end of building process the application should be run.
