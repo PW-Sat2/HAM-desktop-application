@@ -13,7 +13,7 @@ In fact, the software comprises two parts:
   This repo itself does not contain GRC part - running `main.py` file one can use all functionalities but `Signal source` and `Demodulator`.
 
 
-## Usage (with your Python interpreter and GnuRadio Companion installed on your OS)
+## Usage (with your Python interpreter and GnuRadio Companion)
 
 ### Main application
 Just run `main.py` file via Python 2.6 interpreter.
