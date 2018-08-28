@@ -12,22 +12,23 @@ import subprocess
 import file_source
 
 
-class FilePathWrapper:
-    def __init__(self, path):
+class ParamshWrapper:
+    def __init__(self, path, frequency_offset):
         self.path_to_iq_file = str(path)
+        self.frequency_offset = frequency_offset
 
 
 class GRCThread(QtCore.QThread):
     finished_signal = QtCore.pyqtSignal(object)
 
-    def __init__(self, path):
+    def __init__(self, params):
         QtCore.QThread.__init__(self)
-        self.path = path
+        self.params = params
         self.process = None
 
     def run(self):
         print "start thread"
-        file_source.main(options=self.path)
+        file_source.main(options=self.params)
         self.finished_signal.emit(True)
         print "stop thread"
 
@@ -52,13 +53,15 @@ class FileChooser(QtGui.QMainWindow, Ui_MainWindow):
         self.ui.progressBar.setMaximum(0)
         self.ui.statusLabel.setText("Playing")
         self.ui.buttonPlay.setDisabled(True)
-        self.grc_thread = GRCThread(FilePathWrapper(self.ui.pathInput.toPlainText()))
+        self.ui.frequencyOffset.setDisabled(True)
+        self.grc_thread = GRCThread(ParamshWrapper(self.ui.pathInput.toPlainText(), self.ui.frequencyOffset.value()))
         self.grc_thread.finished_signal.connect(self.set_idle)
         self.grc_thread.start()
 
     def set_idle(self):
         self.ui.progressBar.setMaximum(1)
         self.ui.buttonPlay.setDisabled(False)
+        self.ui.frequencyOffset.setDisabled(False)
         self.ui.statusLabel.setText("Idle")
 
 
