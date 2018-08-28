@@ -111,7 +111,7 @@
            <property name="spacing">
             <number>0</number>
            </property>
-           <item row="0" column="8">
+           <item row="0" column="7">
             <widget class="QPushButton" name="helpAccountButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -143,31 +143,37 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="credentialsLoadButton">
-             <property name="minimumSize">
+           <item row="0" column="3">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>0</width>
-               <height>50</height>
+               <width>5</width>
+               <height>20</height>
               </size>
              </property>
-             <property name="toolTip">
-              <string>Click the button to load new credentials...</string>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-             <property name="text">
-              <string>Load credentials from file</string>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
              </property>
-             <property name="icon">
-              <iconset resource="img_pix.qrc">
-               <normaloff>:/credentials/img/key-solid.svg</normaloff>:/credentials/img/key-solid.svg</iconset>
-             </property>
-             <property name="iconSize">
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>35</width>
-               <height>35</height>
+               <width>5</width>
+               <height>20</height>
               </size>
              </property>
-            </widget>
+            </spacer>
            </item>
            <item row="0" column="0">
             <widget class="QPushButton" name="credentialsButton">
@@ -210,54 +216,29 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Expanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>5</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="1">
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>5</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="7">
-            <widget class="Line" name="line_2">
+           <item row="0" column="2">
+            <widget class="QPushButton" name="credentialsLoadButton">
              <property name="minimumSize">
               <size>
-               <width>10</width>
+               <width>0</width>
                <height>50</height>
               </size>
              </property>
-             <property name="maximumSize">
+             <property name="toolTip">
+              <string>Click the button to load new credentials...</string>
+             </property>
+             <property name="text">
+              <string>Load credentials from file</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/credentials/img/key-solid.svg</normaloff>:/credentials/img/key-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
               <size>
-               <width>10</width>
-               <height>50</height>
+               <width>35</width>
+               <height>35</height>
               </size>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
