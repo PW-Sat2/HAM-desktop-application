@@ -19,13 +19,21 @@ from ui.credentials_choose import CredentialsChooseWidget
 from app.watchdog import Watchdog
 import colorlog
 
+if getattr(sys, 'frozen', False):
+    # If the application is run as a bundle, the pyInstaller bootloader
+    # extends the sys module by a flag frozen=True and sets the app
+    # path into variable _MEIPASS'.
+    application_path = sys._MEIPASS
+else:
+    application_path = os.path.dirname(os.path.abspath(__file__))
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", required=False, default=False, action="store_true",
                     help="Increase output verbosity.")
 args = parser.parse_args()
 
 setup_log(args.verbose)
-config = imp.load_source('config', os.path.join(os.path.dirname(__file__), 'config.py'))
+config = imp.load_source('config', os.path.join(application_path, 'config.py'))
 
 
 if __name__ == "__main__":
