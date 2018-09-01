@@ -129,6 +129,7 @@ class Ui_MainWindow(object):
         self.frequencyOffset = QtGui.QDoubleSpinBox(self.gridLayoutWidget)
         self.frequencyOffset.setDecimals(0)
         self.frequencyOffset.setMinimum(-999999999.0)
+        self.frequencyOffset.setMaximum(999999999.0)
         self.frequencyOffset.setProperty("value", 0.0)
         self.frequencyOffset.setObjectName(_fromUtf8("frequencyOffset"))
         self.gridLayout.addWidget(self.frequencyOffset, 0, 2, 1, 1)
