@@ -9,9 +9,12 @@ rm -r $path_to_ham_desktop_application/grc_part/dist
 echo "GSControl clean done"
 
 echo "HAM-desktop-application clean"
-rm -r $path_to_ham_desktop_application/dist
+rm -r $path_to_ham_desktop_application/pw-sat2-gs
 rm -r $path_to_ham_desktop_application/grc_linux/*
 echo "HAM-desktop-application clean done"
+
+echo "build clean"
+rm -r $path_to_ham_desktop_application/pw-sat2-gs.zip
 
 echo "Setup GRC env"
 source $path_to_gr_env/setup_env.sh
@@ -51,11 +54,31 @@ cp -r $path_to_ham_desktop_application/grc_part/dist/grc_part/* $path_to_ham_des
 echo "Packing main app"
 cd $path_to_ham_desktop_application
 pyinstaller main_linux.spec
+
+echo "Remove problematic libraries..."
+
+rm -r $path_to_ham_desktop_application/dist/main/libglib-2.0.so.0
+rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libglib-2.0.so.0
+rm -r $path_to_ham_desktop_application/dist/main/libgio-2.0.so.0
+rm -r $path_to_ham_desktop_application/dist/main/libstdc++.so.6
+rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libstdc++.so.6
+
 echo "Finished"
 
-echo "Run"
-cd $path_to_ham_desktop_application/dist/main
-./main
+echo "Create symlinks"
+cd $path_to_ham_desktop_application/dist
+ln -rs $path_to_ham_desktop_application/dist/main/main PW-Sat2_Ground_Station
+ln -rs $path_to_ham_desktop_application/dist/main/logs logs
+ln -rs $path_to_ham_desktop_application/dist/main/saved_frames saved_frames
+
+echo "Rename and Compress"
+mv $path_to_ham_desktop_application/dist $path_to_ham_desktop_application/pw-sat2-gs
+
+cd $path_to_ham_desktop_application
+zip --symlinks -r pw-sat2-gs pw-sat2-gs
+
+echo "Done"
+
 
 
 

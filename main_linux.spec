@@ -15,12 +15,12 @@ added_files = [
 
 a = Analysis(['main.py'],
              pathex=['/home/pwsat2/GitHub/HAM-desktop-application'],
-             binaries=[ ( '/usr/lib/x86_64-linux-gnu/libpangoft2-1.0.so.0', '.' ) ],
+             binaries=[],
              datas=added_files,
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
-             excludes=[],
+             excludes=['libglib-2.0.so.0', 'libglib-2.0.so.0', 'libgio-2.0.so.0'],
              win_no_prefer_redirects=False,
              win_private_assemblies=False,
              cipher=block_cipher)
