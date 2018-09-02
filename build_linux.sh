@@ -59,9 +59,20 @@ echo "Remove problematic libraries..."
 
 rm -r $path_to_ham_desktop_application/dist/main/libglib-2.0.so.0
 rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libglib-2.0.so.0
+
 rm -r $path_to_ham_desktop_application/dist/main/libgio-2.0.so.0
+
 rm -r $path_to_ham_desktop_application/dist/main/libstdc++.so.6
 rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libstdc++.so.6
+
+rm -r $path_to_ham_desktop_application/dist/main/libz.so.1
+rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libz.so.1
+
+rm -r $path_to_ham_desktop_application/dist/main/libfreetype.so.6
+rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libfreetype.so.6
+
+rm -r $path_to_ham_desktop_application/dist/main/libfontconfig.so.1
+rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libfontconfig.so.1
 
 echo "Finished"
 
