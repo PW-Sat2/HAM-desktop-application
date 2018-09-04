@@ -7,6 +7,11 @@ except:
     print "Cannot import file_source"
 
 try:
+    import grc.source.ssb_audio_source.ssb_audio_source_main as ssb_audio_source
+except:
+    print "Cannot import file_source"
+
+try:
     import grc.source.funcube_source.funcube_source as funcube_source
 except:
     print "Cannot import funcube_source"
@@ -47,6 +52,9 @@ elif args.source == "fcd+":
 elif args.source == "rtl-sdr":
     print "RTL-SDR"
     rtl_sdr_source.main()
+elif args.source == "ssb":
+    print "ssb audio"
+    ssb_audio_source.application()
 elif args.source == "demodulator":
     print "demodulator"
     demodulator.main()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\main_window.ui'
+# Form implementation generated from reading ui file 'main_window.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -136,10 +136,6 @@ class Ui_mainWindow(object):
         self.signalSourceDropdownButton = QtGui.QComboBox(self.gridLayoutWidget_3)
         self.signalSourceDropdownButton.setMinimumSize(QtCore.QSize(100, 50))
         self.signalSourceDropdownButton.setObjectName(_fromUtf8("signalSourceDropdownButton"))
-        self.signalSourceDropdownButton.addItem(_fromUtf8(""))
-        self.signalSourceDropdownButton.addItem(_fromUtf8(""))
-        self.signalSourceDropdownButton.addItem(_fromUtf8(""))
-        self.signalSourceDropdownButton.addItem(_fromUtf8(""))
         self.gridLayout_5.addWidget(self.signalSourceDropdownButton, 0, 0, 1, 1)
         self.runSourceButton = QtGui.QPushButton(self.gridLayoutWidget_3)
         self.runSourceButton.setMinimumSize(QtCore.QSize(50, 50))
@@ -295,10 +291,6 @@ class Ui_mainWindow(object):
         self.credentialsLoadButton.setText(_translate("mainWindow", "Load credentials from file", None))
         self.ribbon.setTabText(self.ribbon.indexOf(self.tab), _translate("mainWindow", "Account", None))
         self.helpSignalSourceButton.setToolTip(_translate("mainWindow", "Help on Signal Source", None))
-        self.signalSourceDropdownButton.setItemText(0, _translate("mainWindow", "Recorded IQ File", None))
-        self.signalSourceDropdownButton.setItemText(1, _translate("mainWindow", "FUNcube Dongle Pro+", None))
-        self.signalSourceDropdownButton.setItemText(2, _translate("mainWindow", "RTL-SDR", None))
-        self.signalSourceDropdownButton.setItemText(3, _translate("mainWindow", "PlutoSDR", None))
         self.runSourceButton.setText(_translate("mainWindow", "Run source", None))
         self.ribbon.setTabText(self.ribbon.indexOf(self.tab_3), _translate("mainWindow", "Signal Source", None))
         self.runDemodulatorButton.setToolTip(_translate("mainWindow", "Run Demodulator", None))

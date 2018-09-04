@@ -1,3 +1,4 @@
+from sys import platform
 from PyQt4 import QtCore, QtGui
 from ui.main_window import Ui_mainWindow
 from app.list_item_factory import UiFrameListWidgetFactory
@@ -27,6 +28,7 @@ class StartQT4(QtGui.QMainWindow):
 
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
+        self.__add_available_signal_sources()
         self.exit_message_handler = ExitMessageHandler(gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue,
                                                        path_queue)
 
@@ -129,12 +131,19 @@ class StartQT4(QtGui.QMainWindow):
         elif item == "PlutoSDR":
             self.source_thread = Thread(target=self.__source_pluto_sdr_command)
             self.source_thread.start()
+        elif item == "Audio in (SSB - USB)":
+            self.source_thread = Thread(target=self.__source_ssb_command)
+            self.source_thread.start()
         else:
             print "Not implemented yet!"
 
     def __source_iq_file_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"')
         subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "iq_file"])
+
+    def __source_ssb_command(self):
+        print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "iq_file"')
+        subprocess.call([os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY']), '-s', "ssb"])
 
     def __source_fcd_plus_command(self):
         print os.path.join(os.path.dirname(__file__), '..', self.config.config['GRC_BINARY'] + ' -s "fcd+"')
@@ -280,6 +289,15 @@ class StartQT4(QtGui.QMainWindow):
             self.ui.credentialsButton.setText("Cannot sign in, trying again...")
             self.ui.credentialsButton.setToolTip("Cannot sign in - restart application, check internet connection or"
                                                  " download and load new credentials from radio.pw-sat.pl.")
+
+    def __add_available_signal_sources(self):
+        self.ui.signalSourceDropdownButton.addItem("Recorded IQ File")
+        self.ui.signalSourceDropdownButton.addItem("RTL-SDR")
+        self.ui.signalSourceDropdownButton.addItem("Audio in (SSB - USB)")
+
+        if platform.startswith('linux'):
+            self.ui.signalSourceDropdownButton.addItem("FUNcube Dongle Pro+")
+            self.ui.signalSourceDropdownButton.addItem("PlutoSDR")
 
     def closeEvent(self, event):
         self.exit_message_handler.exit_action(event)
