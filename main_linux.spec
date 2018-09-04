@@ -9,7 +9,7 @@ added_files = [
          ( 'clean_configs', '.'),
          ( 'grc_linux', 'grc_linux' ),
          ( 'saved_frames', 'saved_frames' ),
-	 ( 'clean_configs/README.txt', 'logs' ),
+         ( 'clean_configs/README.txt', 'logs' ),
          ( 'config_linux/config.py', '.' )
          ]
 

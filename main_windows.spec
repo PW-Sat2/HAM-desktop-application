@@ -9,12 +9,12 @@ added_files = [
          ( 'clean_configs', '.'),
          ( 'grc_windows', 'grc_windows' ),
          ( 'saved_frames', 'saved_frames' ),
-	 ( 'clean_configs/README.txt', 'logs' ),
+         ( 'clean_configs/README.txt', 'logs' ),
          ( 'config_windows/config.py', '.' )
          ]
 
 a = Analysis(['main.py'],
-             pathex=['/home/pwsat2/GitHub/HAM-desktop-application'],
+             pathex=['D:\\Documents\\GitHub\\HAM-desktop-application'],
              binaries=[],
              datas=added_files,
              hiddenimports=[],
@@ -41,4 +41,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='main',
-               icon='/home/pwsat2/GitHub/HAM-desktop-application/ui/img/pw-sat2-logo.ico')
+               icon='D:\\Documents\\GitHub\\HAM-desktop-application\\ui\\img\\pw-sat2-logo.ico')

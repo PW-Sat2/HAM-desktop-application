@@ -42,6 +42,10 @@ echo "RTL SDR surce"
 cd $path_to_gscontrol/gnuradio/downlink/source
 grcc rtl_sdr_source.grc -d $path_to_ham_desktop_application/grc_part/grc/source/rtl_sdr_source
 
+echo "SSB audio surce"
+cd $path_to_gscontrol/gnuradio/downlink/source
+grcc ssb_audio_source_params.grc -d $path_to_ham_desktop_application/grc_part/grc/source/ssb_audio_source
+
 echo "Packing grc_part"
 cd $path_to_ham_desktop_application/grc_part
 pyinstaller grc_part_linux.spec

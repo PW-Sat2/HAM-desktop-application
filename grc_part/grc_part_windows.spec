@@ -8,7 +8,7 @@ added_files = [
          ]
 
 a = Analysis(['grc_part.py'],
-             pathex=['D:\\Documents\\GitHub\\GSControl\\gnuradio\\downlink'],
+             pathex=['D:\\Documents\\GitHub\\HAM-desktop-application\\grc_part'],
              binaries=[],
              datas=added_files,
              hiddenimports=[],
@@ -34,4 +34,5 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='grc_part')
+               name='grc_part',
+               icon='D:\\Documents\\GitHub\\HAM-desktop-application\\grc_part\\misc\\pw-sat2-logo.ico')               
