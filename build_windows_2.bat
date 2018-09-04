@@ -17,9 +17,11 @@ echo "Done"
 echo "Create symlinks"
 cd "%HAM_DESKTOP_REPO%\dist"
 
-%RELATIVE% .\main\main.exe PW-Sat2_Ground_Station
 %RELATIVE% .\main\logs logs
 %RELATIVE% .\main\saved_frames saved_frames
+
+cd "%HAM_DESKTOP_REPO%\clean_configs"
+xcopy /E /b Run_PW-Sat2_Ground_Station.bat "%HAM_DESKTOP_REPO%\dist"
 
 echo "Copy to pw-sat-gs-windows"
 mkdir "%HAM_DESKTOP_REPO%\pw-sat-gs-windows"
