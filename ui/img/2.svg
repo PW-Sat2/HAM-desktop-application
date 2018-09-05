@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   aria-hidden="true"
+   data-prefix="fas"
+   data-icon="file-import"
+   class="svg-inline--fa fa-file-import fa-w-16"
+   role="img"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="2.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     id="namedview6"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="0.5"
+     inkscape:cx="-9.3225083"
+     inkscape:cy="271.71913"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4">
+    <sodipodi:guide
+       position="256,424.81858"
+       orientation="1,0"
+       id="guide821"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="306.81342,256"
+       orientation="0,1"
+       id="guide823"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+  </sodipodi:namedview>
+  <circle
+     style="fill:#4db6ac;fill-opacity:1;stroke-width:1.60207045"
+     id="path817"
+     cx="256"
+     cy="257.81659"
+     r="256" />
+  <g
+     aria-label="2"
+     transform="translate(140.35012,34.779671)"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none"
+     id="flowRoot816">
+    <path
+       d="M 209.90625,365.45861 H 25.53125 V 339.09142 L 118.69531,235.5758 q 25,-27.92969 33.78906,-44.33594 8.98438,-16.40625 8.98438,-33.59375 0,-21.28906 -12.5,-35.74219 -12.30469,-14.64844 -32.8125,-14.64844 -29.492188,0 -43.554688,15.23438 -13.867187,15.03906 -13.867187,42.38281 H 21.820312 l -0.390625,-1.17187 q -0.976562,-36.71875 24.414063,-61.71875 25.390625,-25.000003 70.3125,-25.000003 38.28125,0 60.9375,22.460938 22.85156,22.265625 22.85156,56.835935 0,23.24219 -13.86719,46.67969 -13.67187,23.24219 -38.47656,50 l -74.804685,81.44531 0.390625,0.97656 h 136.71875 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:400px;font-family:Roboto;-inkscape-font-specification:Roboto;fill:#ffffff;fill-opacity:1"
+       id="path1396" />
+  </g>
+</svg>

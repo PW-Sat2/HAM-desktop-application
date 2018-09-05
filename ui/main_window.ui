@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>660</width>
-    <height>650</height>
+    <height>605</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,11 +22,11 @@
   <property name="minimumSize">
    <size>
     <width>660</width>
-    <height>500</height>
+    <height>225</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>PW-Sat2 Ground Station Main Window</string>
+   <string>PW-Sat2 Ground Station - Main Window</string>
   </property>
   <property name="windowIcon">
    <iconset resource="img_pix.qrc">
@@ -104,55 +104,14 @@
             <x>0</x>
             <y>0</y>
             <width>631</width>
-            <height>61</height>
+            <height>64</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="4">
-            <widget class="Line" name="line_2">
-             <property name="minimumSize">
-              <size>
-               <width>10</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>10</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="QLabel" name="serverConnectionStatusTextLabel">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Server radio.pw-sat.pl is online</string>
-             </property>
-             <property name="text">
-              <string>Online</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="7">
             <widget class="QPushButton" name="helpAccountButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -184,36 +143,81 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="serverConnectionStatusIconLabel">
+           <item row="0" column="3">
+            <spacer name="horizontalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>5</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>5</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="credentialsButton">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="minimumSize">
               <size>
-               <width>35</width>
-               <height>35</height>
+               <width>0</width>
+               <height>50</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
+               <width>250</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Account info</string>
+             </property>
+             <property name="text">
+              <string>ham-mail@pw-sat.pl</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/user/img/user-alt-slash-solid.svg</normaloff>:/user/img/user-alt-slash-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
                <width>35</width>
                <height>35</height>
               </size>
              </property>
-             <property name="toolTip">
-              <string>Server radio.pw-sat.pl is online</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="img_pix.qrc">:/cloud-online/img/cloud-online.svg</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="credentialsButton">
+           <item row="0" column="2">
+            <widget class="QPushButton" name="credentialsLoadButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -221,10 +225,10 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Choose a new credentials file...</string>
+              <string>Click the button to load new credentials...</string>
              </property>
              <property name="text">
-              <string>michal.gumiela@gmail.com</string>
+              <string>Load credentials from file</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -237,19 +241,6 @@
               </size>
              </property>
             </widget>
-           </item>
-           <item row="0" column="1">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
            </item>
           </layout>
          </widget>
@@ -268,73 +259,10 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0">
-            <widget class="QComboBox" name="signalSourceDropdownButton">
-             <property name="minimumSize">
-              <size>
-               <width>100</width>
-               <height>50</height>
-              </size>
-             </property>
-             <item>
-              <property name="text">
-               <string>FunCube 2.0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>USRP</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>RTL-SDR</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>IQ Sink</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QPushButton" name="runSourceButton">
-             <property name="minimumSize">
-              <size>
-               <width>50</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Run source</string>
-             </property>
-             <property name="icon">
-              <iconset resource="img_pix.qrc">
-               <normaloff>:/source/img/play-solid.svg</normaloff>:/source/img/play-solid.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>35</width>
-               <height>35</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="3">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="4">
             <widget class="QPushButton" name="helpSignalSourceButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -366,6 +294,68 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="0">
+            <widget class="QComboBox" name="signalSourceDropdownButton">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>50</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="runSourceButton">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>Run source</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/source/img/play-solid.svg</normaloff>:/source/img/play-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="1">
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -383,6 +373,9 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
+           <property name="spacing">
+            <number>0</number>
+           </property>
            <item row="0" column="0">
             <widget class="QPushButton" name="runDemodulatorButton">
              <property name="minimumSize">
@@ -471,6 +464,22 @@
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="5">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
            <item row="0" column="6">
             <widget class="QPushButton" name="helpCloudUploadButton">
              <property name="sizePolicy">
@@ -503,45 +512,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="5">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="loadFramesFromFileButton">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>50</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>Upload frames saved in *.frames file</string>
-             </property>
-             <property name="text">
-              <string>Load Frames From File</string>
-             </property>
-             <property name="icon">
-              <iconset resource="img_pix.qrc">
-               <normaloff>:/load-frames/img/file-import-solid.svg</normaloff>:/load-frames/img/file-import-solid.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>35</width>
-               <height>35</height>
-              </size>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2">
             <widget class="QToolButton" name="autoUploadToolButton">
              <property name="sizePolicy">
@@ -563,7 +533,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>Upload frames to cloud automatically</string>
+              <string>Send frames from the list to cloud</string>
              </property>
              <property name="layoutDirection">
               <enum>Qt::LeftToRight</enum>
@@ -572,7 +542,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>Auto Send Frames</string>
+              <string>Auto-Upload Enabled</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
@@ -600,31 +570,28 @@
              <property name="autoExclusive">
               <bool>false</bool>
              </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
             </widget>
            </item>
-           <item row="0" column="3">
-            <widget class="QPushButton" name="sendFramesToCloudButton">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="loadFramesFromFileButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
                <height>50</height>
               </size>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>50</height>
-              </size>
-             </property>
              <property name="toolTip">
-              <string>Send frames from the list to cloud</string>
+              <string>Upload frames saved in *.frames file</string>
              </property>
              <property name="text">
-              <string>Send Frames To Cloud</string>
+              <string>Load From File</string>
              </property>
              <property name="icon">
               <iconset resource="img_pix.qrc">
-               <normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</iconset>
+               <normaloff>:/load-frames/img/file-import-solid.svg</normaloff>:/load-frames/img/file-import-solid.svg</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -653,6 +620,48 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="4">
+            <widget class="QPushButton" name="sendUnsuccessfulButton">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string notr="true">Click to try again sending frames that have not been successfully sent (labeled with error).</string>
+             </property>
+             <property name="text">
+              <string>Re-Upload Failed</string>
+             </property>
+             <property name="icon">
+              <iconset resource="img_pix.qrc">
+               <normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</normaloff>:/cloud-upload/img/cloud-upload-alt-solid.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -672,7 +681,7 @@
         <property name="minimumSize">
          <size>
           <width>520</width>
-          <height>360</height>
+          <height>65</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -680,6 +689,18 @@
           <width>2000</width>
           <height>10000</height>
          </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="resizeMode">
+         <enum>QListView::Adjust</enum>
         </property>
         <property name="sortingEnabled">
          <bool>false</bool>
@@ -694,7 +715,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
-          <height>20</height>
+          <height>10</height>
          </size>
         </property>
        </spacer>

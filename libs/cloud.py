@@ -1,7 +1,7 @@
 import json
 import requests
-import time
 import base64
+import logging
 
 
 class CloudUploadResponse:
@@ -22,11 +22,13 @@ class Cloud:
         self.headers = {'content-type': 'application/json'}
         self.base_url = base_url
         self.credentials = None
-        self.load_credentials(credentials_path)
+        self.credentials_path = credentials_path
+        self.load_credentials()
+        self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
     def authenticate(self):
         url = self.base_url + '/api/authenticate'
-        response = requests.post(url, data=json.dumps(self.credentials), headers=self.headers)
+        response = requests.post(url, data=json.dumps(self.credentials), headers=self.headers, timeout=5)
         return response.cookies
 
     def validate_auth(self, auth_response):
@@ -39,9 +41,10 @@ class Cloud:
                    'timestamp': int(packet['timestamp']*1000),
                    'traffic': 'Rx'}
 
-        response = requests.put(url, data=json.dumps(payload), headers=self.headers, cookies=self.authenticate())
+        response = requests.put(url, data=json.dumps(payload), headers=self.headers, cookies=self.authenticate(),
+                                timeout=5)
         return CloudUploadResponse(response)
 
-    def load_credentials(self, path):
-        with open(path) as f:
+    def load_credentials(self):
+        with open(self.credentials_path) as f:
             self.credentials = json.load(f)

@@ -1,8 +1,12 @@
+import os
+import sys
 from sink import FrameSink
 from frame_factory import FrameFactory
 from setup_log import setup_log
 import argparse
 import logging
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--directory", required=False, default="../../test_frames",
@@ -16,7 +20,7 @@ parser.add_argument("--max", required=False, default=1.0, type=float,
 args = parser.parse_args()
 
 demodulator = FrameSink()
-factory = FrameFactory(args.directory)
+factory = FrameFactory(resource_path(args.directory))
 
 root_logger = setup_log(args.verbose)
 root_logger.log(logging.INFO, "Use Ctrl-C to terminate.")

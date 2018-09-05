@@ -2,10 +2,23 @@
   <qresource prefix="cloud-upload">
     <file>img/cloud-upload-alt-solid.svg</file>
   </qresource>
+  <qresource prefix="user">
+    <file>img/user-alt-slash-solid.svg</file>
+    <file>img/user-check-solid.svg</file>
+  </qresource>
+  <qresource prefix="numbers">
+    <file>img/2.svg</file>
+    <file>img/3.svg</file>
+    <file>img/1.svg</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>img/PW07-wersja-monochromatyczna.svg</file>
+  </qresource>
   <qresource prefix="source">
     <file>img/play-solid.svg</file>
   </qresource>
   <qresource prefix="credentials">
+    <file>img/key-solid-disabled.svg</file>
     <file>img/key-solid.svg</file>
   </qresource>
   <qresource prefix="demodulator">

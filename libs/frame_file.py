@@ -1,5 +1,4 @@
 import base64
-import time
 import datetime
 import logging
 
@@ -7,14 +6,14 @@ import logging
 class FrameFile:
     def __init__(self, path):
         self.path = path
-        self.logger = logging.getLogger("FrameFile")
+        self.logger = logging.getLogger(__name__ + "." + self.__class__.__name__)
 
     def __format_timestamp(self, packet):
         return datetime.datetime.utcfromtimestamp(packet["timestamp"]).strftime("%Y-%m-%d_%H:%M:%S:%f")
 
     def __decode_timestamp(self, timestamp_string):
         return (datetime.datetime.strptime(timestamp_string, "%Y-%m-%d_%H:%M:%S:%f") -
-         datetime.datetime.utcfromtimestamp(0)).total_seconds()
+                datetime.datetime.utcfromtimestamp(0)).total_seconds()
 
     def __encode_base64(self, packet):
         return base64.b64encode(packet["frame"])
@@ -41,14 +40,17 @@ class FrameFile:
             return f.readlines()
 
     def read_packets(self):
-        raw = self.read_raw()
-        packets = []
-        for item in raw:
-            try:
-                packets.append(self.__decode(item))
-                self.logger.log(logging.DEBUG, "Processed packet: " + item)
-            except ValueError as error:
-                self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
-            except TypeError as error:
-                self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
-        return packets
+        try:
+            raw = self.read_raw()
+            packets = []
+            for item in raw:
+                try:
+                    packets.append(self.__decode(item))
+                    self.logger.log(logging.DEBUG, "Processed packet: " + item)
+                except ValueError as error:
+                    self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
+                except TypeError as error:
+                    self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
+            return packets
+        except IOError:
+            return None
