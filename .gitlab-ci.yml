@@ -1,0 +1,22 @@
+image: pwsat2/ham_desktop_app:ubuntu_18.04
+
+stages:
+  - build
+
+before_script:
+  - cd /home/pwsat2/GitHub
+  - git clone https://github.com/PW-Sat2/GSControl
+  - cd GSControl
+  - git checkout temp_merge
+
+build:
+  stage: build
+  script:
+  - cp -r $CI_PROJECT_DIR /home/pwsat2/GitHub/HAM-desktop-application
+  - cd /home/pwsat2/GitHub/HAM-desktop-application
+  - /home/pwsat2/prefix/default/setup_env.sh
+  - ./build_linux.sh
+  - cp -r pw-sat2-gs.zip $CI_PROJECT_DIR/pw-sat2-gs.zip
+  artifacts:
+    paths:
+    - pw-sat2-gs.zip
