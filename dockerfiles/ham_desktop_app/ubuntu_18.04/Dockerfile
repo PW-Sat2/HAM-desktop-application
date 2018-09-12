@@ -22,7 +22,7 @@ RUN sudo pybombs install gr-iio
 # Install FUNCube Dongle Pro+ and RTL-SDR
 RUN sudo apt-get update && sudo apt-get install -y libusb-1.0-0-dev libudev-dev && \
     cd /home/pwsat2/GitHub && \
-    git clone https://github.com/signal11/hidapi && \
+    git clone https://github.com/signal11/hidapi.git && \
     cd hidapi && \
     git checkout a6a622ffb680c55da0de787ff93b80280498330f && \
     ./bootstrap && \
@@ -30,12 +30,12 @@ RUN sudo apt-get update && sudo apt-get install -y libusb-1.0-0-dev libudev-dev 
     make && \
     sudo make install
 RUN cd /home/pwsat2/GitHub && \
-    git clone https://git.osmocom.org/rtl-sdr && \
+    git clone https://github.com/osmocom/rtl-sdr.git && \
     cd rtl-sdr/ && \
     git checkout 1f0eafe60445339703903af6d8814ffab7e73784 && \
     mkdir build && \
     cd build && \
-    sudo cmake -DCMAKE_INSTALL_PREFIX=/home/pwsat2/prefix/default .. && \
+    sudo cmake -DCMAKE_INSTALL_PREFIX=/home/pwsat2/prefix/default .. -DDETACH_KERNEL_DRIVER=ON && \
     sudo make && \
     sudo make install
 RUN cd /home/pwsat2/GitHub && \
@@ -48,7 +48,7 @@ RUN cd /home/pwsat2/GitHub && \
     sudo make && \
     sudo make install
 RUN cd /home/pwsat2/GitHub && \
-    git clone https://git.osmocom.org/gr-osmosdr && \
+    git clone https://github.com/osmocom/gr-osmosdr.git && \
     cd gr-osmosdr && \
     git checkout 4d83c6067f059b0c5015c3f59f8117bbd361e877 && \
     mkdir build && \
