@@ -15,6 +15,7 @@ from ui.credentials_choose import CredentialsChooseWidget
 from app.load_credentials_file import LoadCredentialsFile, WrongOrEmptyCredentials, CorrectCredentials, UnknownError
 from threading import Thread
 import subprocess
+from update import Updater
 
 import logging
 from libs.gui_helpers import set_btn_icon
@@ -23,7 +24,7 @@ import os
 
 class StartQT4(QtGui.QMainWindow):
     def __init__(self, stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue,
-                 send_active, upload_cloud_thread):
+                 send_active, upload_cloud_thread, application_path):
         QtGui.QWidget.__init__(self, None)
 
         self.ui = Ui_mainWindow()
@@ -34,6 +35,7 @@ class StartQT4(QtGui.QMainWindow):
 
         self.config = config
         self.stop_event = stop_event
+        self.application_path = application_path
 
         self.gui_queue = gui_queue
         self.error_queue = error_queue
@@ -183,6 +185,10 @@ class StartQT4(QtGui.QMainWindow):
         self.auth_status_thread = CheckAuthThread(self.stop_event, self.config.config)
         self.auth_status_thread.state_signal.connect(self.set_auth_status)
         self.auth_status_thread.start()
+
+        self.update_service_thread = Updater(self.stop_event, self.config.config, self.application_path)
+        self.update_service_thread.to_update.connect(self.update_service_thread.show_update_window)
+        self.update_service_thread.start()
 
         self.ui.credentialsLoadButton.clicked.connect(self.__credentials_file_load_check_propagate)
 

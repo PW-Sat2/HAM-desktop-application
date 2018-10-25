@@ -59,7 +59,8 @@ if __name__ == "__main__":
     frames_receiver_thread.start()
 
     hamApp = StartQT4(stop_event, config, gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue, path_queue,
-                      send_active, upload_cloud_thread)
+                      send_active, upload_cloud_thread, application_path)
+
     hamApp.show()
 
     watchdog_thread = Watchdog(stop_event, file_save_thread, frames_receiver_thread, upload_cloud_thread,
