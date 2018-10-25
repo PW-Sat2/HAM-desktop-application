@@ -1,6 +1,6 @@
 config = dict(
-    APP_VERSION=0.9,
-    APP_NEW_VERSION_URL="http://collectd.titan.gajoch.pl/current_version.py",
+    APP_VERSION=0.89,
+    APP_NEW_VERSION_URL="https://raw.githubusercontent.com/PW-Sat2/HAM-desktop-application/master/current_version.py",
     ZMQ_TARGET='localhost',
     ZMQ_PORT=7001,
     CLOUD_URL='http://titan.gajoch.pl:9090',
