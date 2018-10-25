@@ -32,15 +32,15 @@ grcc file_source_path.grc -d $path_to_ham_desktop_application/grc_part/grc/sourc
 
 echo "Funcube source"
 cd $path_to_gscontrol/gnuradio/downlink/source
-grcc funcube_source.grc -d $path_to_ham_desktop_application/grc_part/grc/source/funcube_source
+grcc funcube_source_source_parameter.grc -d $path_to_ham_desktop_application/grc_part/grc/source/funcube_source
 
 echo "PlutoSDR Source"
 cd $path_to_gscontrol/gnuradio/downlink/source
-grcc plutosdr_source.grc -d $path_to_ham_desktop_application/grc_part/grc/source/plutosdr_source
+grcc plutosdr_source_source_parameter.grc -d $path_to_ham_desktop_application/grc_part/grc/source/plutosdr_source
 
 echo "RTL SDR surce"
 cd $path_to_gscontrol/gnuradio/downlink/source
-grcc rtl_sdr_source.grc -d $path_to_ham_desktop_application/grc_part/grc/source/rtl_sdr_source
+grcc rtl_sdr_source_source_parameter.grc -d $path_to_ham_desktop_application/grc_part/grc/source/rtl_sdr_source
 
 echo "SSB audio surce"
 cd $path_to_gscontrol/gnuradio/downlink/source
