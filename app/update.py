@@ -58,7 +58,8 @@ class Updater(QtCore.QThread):
         self.logger.log(logging.DEBUG, "Value of pressed update message box button: {0}".format(retval))
 
     def msgbtn(self, response):
-        if str(response.text()).find("OK"):
+        print str(response.text())
+        if str(response.text()).find("OK") != -1:
             webbrowser.open(self.new_version_desc.new_version['UPDATE_URL'])
             self.logger.log(logging.DEBUG, "Web browser opened")
 
