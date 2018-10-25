@@ -19,7 +19,7 @@ echo "Downlink"
 echo "File source"
 %GRCPYTHON% %GRCC% "%GSCONTROL_REPO%\gnuradio\downlink\source\file_source_path.grc" -d "%HAM_DESKTOP_REPO%\grc_part\grc\source\file_source"
 echo "RTL SDR surce"
-%GRCPYTHON% %GRCC% "%GSCONTROL_REPO%\gnuradio\downlink\source\rtl_sdr_source.grc" -d "%HAM_DESKTOP_REPO%\grc_part\grc\source\rtl_sdr_source"
+%GRCPYTHON% %GRCC% "%GSCONTROL_REPO%\gnuradio\downlink\source\rtl_sdr_source_source_parameter.grc" -d "%HAM_DESKTOP_REPO%\grc_part\grc\source\rtl_sdr_source"
 echo "SSB source"
 %GRCPYTHON% %GRCC% "%GSCONTROL_REPO%\gnuradio\downlink\source\ssb_audio_source_params.grc" -d "%HAM_DESKTOP_REPO%\grc_part\grc\source\ssb_audio_source"
 
