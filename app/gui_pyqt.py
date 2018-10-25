@@ -29,6 +29,10 @@ class StartQT4(QtGui.QMainWindow):
 
         self.ui = Ui_mainWindow()
         self.ui.setupUi(self)
+
+        QtGui.QWidget.setWindowTitle(self, "PW-Sat2 Ground Station (ver. {0}) - Main Window".format(
+                                            config.config['APP_VERSION']))
+
         self.__add_available_signal_sources()
         self.exit_message_handler = ExitMessageHandler(gui_queue, cloud_tx_queue, cloud_rx_queue, error_queue,
                                                        path_queue)
