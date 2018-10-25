@@ -18,7 +18,6 @@ import argparse
 from ui.credentials_choose import CredentialsChooseWidget
 from app.watchdog import Watchdog
 import colorlog
-from app import update
 
 if getattr(sys, 'frozen', False):
     # If the application is run as a bundle, the pyInstaller bootloader
