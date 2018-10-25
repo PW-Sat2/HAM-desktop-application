@@ -22,14 +22,13 @@ class Updater(QtCore.QThread):
 
     def download_version_file(self):
         got_version_file = False
-        while not got_version_file:
+        while not got_version_file and not self.stop_event.wait(10):
             try:
                 urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], 'current_version.py')
                 got_version_file = True
             except:
                 got_version_file = False
                 self.logger.log(logging.DEBUG, "Error in getting version file")
-                time.sleep(10)
         self.logger.log(logging.DEBUG, "Got version file")
 
     def is_new_version_available(self):
