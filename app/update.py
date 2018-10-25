@@ -6,6 +6,7 @@ import logging
 import webbrowser
 import imp
 import urllib
+import time
 
 
 class Updater(QtCore.QThread):
@@ -20,7 +21,16 @@ class Updater(QtCore.QThread):
         self.application_path = application_path
 
     def download_version_file(self):
-        urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], 'current_version.py')
+        got_version_file = False
+        while not got_version_file:
+            try:
+                urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], 'current_version.py')
+                got_version_file = True
+            except:
+                got_version_file = False
+                self.logger.log(logging.DEBUG, "Error in getting version file")
+                time.sleep(10)
+        self.logger.log(logging.DEBUG, "Got version file")
 
     def is_new_version_available(self):
         app_version = self.config['APP_VERSION']
