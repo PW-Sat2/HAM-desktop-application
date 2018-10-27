@@ -22,13 +22,14 @@ class Updater(QtCore.QThread):
 
     def download_version_file(self):
         got_version_file = False
-        while not got_version_file and not self.stop_event.wait(10):
+        while not got_version_file and not self.stop_event.wait(0):
             try:
                 urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], 'current_version.py')
                 got_version_file = True
             except:
                 got_version_file = False
                 self.logger.log(logging.DEBUG, "Error in getting version file")
+                time.sleep(10)
         self.logger.log(logging.DEBUG, "Got version file")
 
     def is_new_version_available(self):
@@ -58,7 +59,7 @@ class Updater(QtCore.QThread):
         self.logger.log(logging.DEBUG, "Value of pressed update message box button: {0}".format(retval))
 
     def msgbtn(self, response):
-        print str(response.text())
+        self.logger.log(logging.DEBUG, response.text())
         if str(response.text()).find("OK") != -1:
             webbrowser.open(self.new_version_desc.new_version['UPDATE_URL'])
             self.logger.log(logging.DEBUG, "Web browser opened")
