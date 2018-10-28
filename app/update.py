@@ -24,7 +24,7 @@ class Updater(QtCore.QThread):
         got_version_file = False
         while not got_version_file and not self.stop_event.wait(0):
             try:
-                urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], 'current_version.py')
+                urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], os.path.join(self.application_path, 'current_version.py'))
                 got_version_file = True
             except:
                 got_version_file = False
