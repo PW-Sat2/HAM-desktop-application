@@ -1,4 +1,10 @@
 import argparse
+import UserList
+import UserString
+import UserDict
+import itertools
+import collections
+import future.backports.misc
 import gnuradio
 import sys
 from PyQt4 import QtGui
