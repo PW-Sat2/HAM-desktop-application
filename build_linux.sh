@@ -78,6 +78,8 @@ rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libfreetype.so.6
 rm -r $path_to_ham_desktop_application/dist/main/libfontconfig.so.1
 rm -r $path_to_ham_desktop_application/dist/main/grc_linux/libfontconfig.so.1
 
+rm -r $path_to_ham_desktop_application/dist/main/libgcc_s.so.1
+
 echo "Finished"
 
 echo "Create symlinks"
