@@ -26,9 +26,9 @@ class Updater(QtCore.QThread):
             try:
                 urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], os.path.join(self.application_path, 'current_version.py'))
                 got_version_file = True
-            except:
+            except Exception as e:
                 got_version_file = False
-                self.logger.log(logging.DEBUG, "Error in getting version file")
+                self.logger.log(logging.DEBUG, "Error in getting version file: {0}".format(e))
                 time.sleep(10)
         self.logger.log(logging.DEBUG, "Got version file")
 
