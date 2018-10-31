@@ -6,6 +6,7 @@ import logging
 import webbrowser
 import imp
 import urllib
+import ssl
 import time
 
 
@@ -24,7 +25,13 @@ class Updater(QtCore.QThread):
         got_version_file = False
         while not got_version_file and not self.stop_event.wait(0):
             try:
-                urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'], os.path.join(self.application_path, 'current_version.py'))
+                ctx = ssl.create_default_context()
+                ctx.check_hostname = False
+                ctx.verify_mode = ssl.CERT_NONE
+
+                urllib.urlretrieve(self.config['APP_NEW_VERSION_URL'],
+                                   os.path.join(self.application_path, 'current_version.py'),
+                                   context=ctx)
                 got_version_file = True
             except:
                 got_version_file = False
