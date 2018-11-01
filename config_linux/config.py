@@ -1,5 +1,5 @@
 config = dict(
-    APP_VERSION=0.95,
+    APP_VERSION=0.96,
     APP_NEW_VERSION_URL="https://raw.githubusercontent.com/PW-Sat2/HAM-desktop-application/master/current_version.py",
     ZMQ_TARGET='localhost',
     ZMQ_PORT=7001,
