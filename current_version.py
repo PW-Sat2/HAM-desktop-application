@@ -6,6 +6,6 @@ new_version = dict(
                             "<a href='https://github.com/PW-Sat2/HAM-desktop-application/releases/tag/1.10'>"
                             "download page</a>.",
     WINDOW_DETAILED_TEXT="Changelog: \n"
-                         "* Callsign check added (to get rid of false and incorrect frames received from noise, mainly in SSB-USB mode\n",
+                         "* Callsign check added (to get rid of false and incorrect frames received from noise, mainly in SSB-USB mode)\n",
     UPDATE_URL="https://github.com/PW-Sat2/HAM-desktop-application/releases/tag/1.10"
 )
