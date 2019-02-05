@@ -64,7 +64,7 @@ class Cloud:
                    'timestamp': int(packet['timestamp']*1000),
                    'traffic': 'Rx'}
 
-        response = self.session.put(url, json=payload, timeout=1)     
+        response = self.session.put(url, json=payload, timeout=5)     
         return CloudUploadResponse(response)
 
     def load_credentials(self):
