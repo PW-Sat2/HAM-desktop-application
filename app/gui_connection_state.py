@@ -24,5 +24,8 @@ class CheckAuthThread(QtCore.QThread):
     def run(self):
         self.check()
         while not self.stop_event.wait(30):
-            self.check()
+            try:
+                self.check()
+            except Exception as e:
+                self.logger.error("Major Exception in Check Auth hread", exc_info=e)
         self.logger.log(logging.DEBUG, "Finished CheckAuthThread")

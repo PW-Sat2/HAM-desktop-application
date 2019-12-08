@@ -48,9 +48,9 @@ class FrameFile:
                     packets.append(self.__decode(item))
                     self.logger.log(logging.DEBUG, "Processed packet: " + item)
                 except ValueError as error:
-                    self.logger.log(logging.DEBUG, "ValueError " + str(error.args) + " in packet decoding: " + item)
+                    self.logger.log(logging.ERROR, "ValueError " + str(error.args) + " in packet decoding: " + item)
                 except TypeError as error:
-                    self.logger.log(logging.DEBUG, "TypeError " + str(error.args) + " in packet decoding: " + item)
+                    self.logger.log(logging.ERROR, "TypeError " + str(error.args) + " in packet decoding: " + item)
             return packets
         except IOError:
             return None

@@ -46,5 +46,5 @@ class LoadCredentialsFile:
                     logger.log(logging.DEBUG, "Wrong file")
                     return WrongOrEmptyCredentials
         except:
-            logger.log(logging.DEBUG, "Load file exception")
+            logger.log(logging.ERROR, "Load file exception")
             return UnknownError

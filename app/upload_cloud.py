@@ -34,14 +34,17 @@ class UploadCloud(Thread):
                         self.cloud_tx_queue.appendleft(data)
                         if data.upload_status is False:
                             self.error_queue.appendleft(data)
-                            self.logger.log(logging.DEBUG, "added to error queue because of credentials")
-                    except requests.ConnectionError, requests.ReadTimeout:
+                            self.logger.log(logging.WARNING, "added to error queue because of credentials")
+                    except (requests.ConnectionError, requests.ReadTimeout):
                         data.upload_status = False
                         self.error_queue.appendleft(data)
                         self.cloud_tx_queue.appendleft(data)
-                        self.logger.log(logging.DEBUG, "added to error queue because of internet")
+                        self.logger.log(logging.WARNING, "added to error queue because of internet")
                 except IndexError:
                     time.sleep(1)
+                except Exception as e:
+                    self.logger.error("Major Exception in Upload Thread", exc_info=e)
+
         self.logger.log(logging.DEBUG, "Finished UploadCloud")
 
 
@@ -70,11 +73,13 @@ class UploadCloudError(Thread):
                 self.cloud_tx_queue.append(data)
                 if data.upload_status is False:
                     self.error_queue.appendleft(data)
-                    print "again added to error queue"
+                    self.logger.log(logging.WARNING, "again added to error queue")
             except IndexError:
                 time.sleep(1)
-            except requests.ConnectionError:
+            except (requests.ConnectionError, requests.ReadTimeout):
                 self.error_queue.appendleft(data)
-                print "again added to error queue"
+                self.logger.log(logging.WARNING, "again added to error queue:")
+            except Exception as e:
+                self.logger.error("Major Exception in UploadCloudError Thread", exc_info=e)
 
         self.logger.log(logging.DEBUG, "Finished UploadCloudError")

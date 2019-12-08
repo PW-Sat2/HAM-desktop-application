@@ -28,8 +28,11 @@ class ReceiveDistribute(Thread):
 
     def run(self):
         while not self.stop_event.wait(0):
-            packet = self.connect_and_get_packet()
-            if packet is not None:
-                self.gui_queue.append(packet)
-                self.file_queue.put(packet)
+            try:
+                packet = self.connect_and_get_packet()
+                if packet is not None:
+                    self.gui_queue.append(packet)
+                    self.file_queue.put(packet)
+            except Exception as e:
+                self.logger.error("Major Exception in Receive Distribute Thread", exc_info=e)
         self.logger.log(logging.DEBUG, "Finished ReceiveDistribute")

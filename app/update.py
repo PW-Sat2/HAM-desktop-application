@@ -35,7 +35,7 @@ class Updater(QtCore.QThread):
                 got_version_file = True
             except Exception as e:
                 got_version_file = False
-                self.logger.log(logging.DEBUG, "Error in getting version file: {0}".format(e))
+                self.logger.log(logging.ERROR, "Error in getting version file: {0}".format(e))
                 time.sleep(10)
         self.logger.log(logging.DEBUG, "Got version file")
 
@@ -72,7 +72,10 @@ class Updater(QtCore.QThread):
             self.logger.log(logging.DEBUG, "Web browser opened")
 
     def run(self):
-        self.download_version_file()
-        self.load_new_version_desc()
-        self.is_new_version_available()
+        try:
+            self.download_version_file()
+            self.load_new_version_desc()
+            self.is_new_version_available()
+        except Exception as e:
+            self.logger.error("Major Exception in Updater", exc_info=e)
         self.logger.log(logging.DEBUG, "Finished Updater")

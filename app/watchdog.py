@@ -22,12 +22,12 @@ class Watchdog(Thread):
                 for thread in self.python_threads:
                     if not thread.is_alive():
                         thread.start()
-                        self.logger.log(logging.DEBUG, "Starting thread that was not alive " + str(thread))
+                        self.logger.log(logging.INFO, "Starting thread that was not alive " + str(thread))
 
                 for thread in self.qt_threads:
                     if not thread.isRunning():
                         thread.start()
-                        self.logger.log(logging.DEBUG, "Starting thread that was not alive " + str(thread))
-            except:
-                self.logger.log(logging.DEBUG, "Exception in Watchdog thread!")
+                        self.logger.log(logging.INFO, "Starting thread that was not alive " + str(thread))
+            except Exception as e:
+                self.logger.log(logging.ERROR, "Exception in Watchdog thread! {}".format(e))
         self.logger.log(logging.DEBUG, "Finished Watchdog")

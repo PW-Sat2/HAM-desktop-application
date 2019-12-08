@@ -24,7 +24,7 @@ class FromFileToGuiQueueThreadFactory:
             thread.start()
             thread.join()
         except:
-            self.logger.log(logging.DEBUG, "Load file exception")
+            self.logger.log(logging.ERROR, "Load file exception")
 
 
 class FromFileToGuiQueueThread(Thread):
@@ -42,5 +42,5 @@ class FromFileToGuiQueueThread(Thread):
             for packet in packets:
                 self.gui_queue.append(packet)
         except TypeError:
-            self.logger.log(logging.DEBUG, "Empty packets list")
+            self.logger.log(logging.ERROR, "Empty packets list")
         self.logger.log(logging.DEBUG, "Finished FromFileToGuiQueueThread")
