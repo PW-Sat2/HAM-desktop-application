@@ -1,9 +1,9 @@
 config = dict(
-    APP_VERSION=1.20,
+    APP_VERSION=1.30,
     APP_NEW_VERSION_URL="https://raw.githubusercontent.com/PW-Sat2/HAM-desktop-application/master/current_version.py",
     ZMQ_TARGET='localhost',
     ZMQ_PORT=7001,
-    CLOUD_URL='http://radio.pw-sat.pl',
+    CLOUD_URL='https://radio.pw-sat.pl',
     PING_URL='radio.pw-sat.pl',
     CREDENTIALS_FILE='credentials.json',
     HELP_ACCOUNT='https://github.com/PW-Sat2/HAMRadio/wiki/Credentials-loading/',
