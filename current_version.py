@@ -7,7 +7,7 @@ new_version = dict(
                             "download page</a>.",
     WINDOW_DETAILED_TEXT="Changelog: \n"
                          "* fixed bug interrupting frames upload,\n"
-                         "* deep sleep frames tagging,\n",
+                         "* deep sleep frames tagging,\n"
                          "* a few minor improvements (e.g. decreased logging).\n",
     UPDATE_URL="https://github.com/PW-Sat2/HAM-desktop-application/releases/tag/1.30"
 )
