@@ -16,7 +16,6 @@ from app.pyinstaller_hacks import resource_path
 import shutil
 import argparse
 from ui.credentials_choose import CredentialsChooseWidget
-from app.watchdog import Watchdog
 import colorlog
 
 if getattr(sys, 'frozen', False):
@@ -62,10 +61,6 @@ if __name__ == "__main__":
                       send_active, upload_cloud_thread, application_path)
 
     hamApp.show()
-
-    watchdog_thread = Watchdog(stop_event, file_save_thread, frames_receiver_thread, upload_cloud_thread,
-                               hamApp.auth_status_thread, hamApp.item_widgets_thread, hamApp.item_widgets_update_thread)
-    watchdog_thread.start()
 
     status = app.exec_()
     stop_event.set()

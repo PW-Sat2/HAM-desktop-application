@@ -43,4 +43,6 @@ class SaveFramesFileThread(Thread):
                 writer.save(data)
             except Queue.Empty:
                 pass
+            except Exception as e:
+                self.logger.error("Major Exception in Save Frames Thread", exc_info=e)
         self.logger.log(logging.DEBUG, "Finished ReceiveDistribute")

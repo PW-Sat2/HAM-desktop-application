@@ -38,5 +38,6 @@ class FrameRecognizer:
             0x1A: "i2c",
             0x1B: "periodic set",
             0x1C: "sail experiment",
+            0x24: "deep sleep telemetry",
         }
         return switch.get(apid_byte & 0x3F, "unknown")

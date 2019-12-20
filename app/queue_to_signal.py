@@ -21,4 +21,6 @@ class GetFromQueueToSignalThread(QtCore.QThread):
                 self.item_ready.emit(widget_item)
             except IndexError:
                 time.sleep(1)
+            except Exception as e:
+                self.logger.error("Major Exception in GetFromQueueToSignalThread", exc_info=e)
         self.logger.log(logging.DEBUG, "Finished GetFromQueueToSignalThread")

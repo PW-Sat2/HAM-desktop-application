@@ -55,6 +55,7 @@ def get_frame_type_colour(frame_type):
         "i2c": label_material_lime,
         "periodic set": label_material_deep_orange,
         "sail experiment": label_material_brown,
+        "deep sleep telemetry": label_material_teal,
         "unknown": label_material_grey,
     }
     return switch.get(frame_type, label_material_grey)

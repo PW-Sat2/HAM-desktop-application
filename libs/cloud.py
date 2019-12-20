@@ -54,7 +54,7 @@ class Cloud:
     def put_packet(self, packet):
         if (time.time() - self.last_connection_time) > self.MAX_IDLE_TIME:
             self.session = self.create_session()
-            self.logger.log(logging.ERROR, "MAX_IDLE_TIME over!")
+            self.logger.log(logging.DEBUG, "MAX_IDLE_TIME over! Creating new session.")
         else:
             self.last_connection_time = time.time()
 
@@ -64,7 +64,7 @@ class Cloud:
                    'timestamp': int(packet['timestamp']*1000),
                    'traffic': 'Rx'}
 
-        response = self.session.put(url, json=payload, timeout=5)     
+        response = self.session.put(url, json=payload, timeout=10)     
         return CloudUploadResponse(response)
 
     def load_credentials(self):

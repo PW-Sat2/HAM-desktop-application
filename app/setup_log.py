@@ -37,7 +37,9 @@ def setup_log(debug):
 
     if debug:
         root_logger_std.setLevel(logging.DEBUG)
+        root_logger_file.setLevel(logging.DEBUG)
     else:
         root_logger_std.setLevel(logging.INFO)
+        root_logger_file.setLevel(logging.INFO)
 
-    root_logger_file.setLevel(logging.DEBUG)
+    
